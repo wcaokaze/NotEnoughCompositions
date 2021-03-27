@@ -1,18 +1,18 @@
-(module choc_v2 (layer F.Cu) (tedit 605E8ECE)
-  (fp_text reference SW* (at 5.1 7.95 180) (layer Dwgs.User) hide
+(module choc_v2 (layer F.Cu) (tedit 605EA0BB)
+  (fp_text reference SW* (at 4 4 180) (layer Dwgs.User) hide
     (effects (font (size 1 1) (thickness 0.15)))
   )
-  (fp_text value SW_PUSH (at 0 7.9 180) (layer Dwgs.User) hide
+  (fp_text value SW_PUSH (at -1.6 -5 180) (layer Dwgs.User) hide
     (effects (font (size 1 1) (thickness 0.15)))
   )
-  (fp_line (start -9.525 -9.525) (end 9.525 -9.525) (layer Dwgs.User) (width 0.15))
-  (fp_line (start 9.525 -9.525) (end 9.525 9.525) (layer Dwgs.User) (width 0.15))
-  (fp_line (start 9.525 9.525) (end -9.525 9.525) (layer Dwgs.User) (width 0.15))
-  (fp_line (start -9.525 9.525) (end -9.525 -9.525) (layer Dwgs.User) (width 0.15))
-  (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
-  (fp_line (start -7 -7) (end -6 -7) (layer Dwgs.User) (width 0.15))
-  (fp_line (start 6 7) (end 7 7) (layer Dwgs.User) (width 0.15))
   (fp_line (start 7 7) (end 7 6) (layer Dwgs.User) (width 0.15))
+  (fp_line (start 6 7) (end 7 7) (layer Dwgs.User) (width 0.15))
+  (fp_line (start -7 -7) (end -6 -7) (layer Dwgs.User) (width 0.15))
+  (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
+  (fp_line (start -9.525 8) (end -9.525 -8) (layer Dwgs.User) (width 0.15))
+  (fp_line (start 9.525 8) (end -9.525 8) (layer Dwgs.User) (width 0.15))
+  (fp_line (start 9.525 -8) (end 9.525 8) (layer Dwgs.User) (width 0.15))
+  (fp_line (start -9.525 -8) (end 9.525 -8) (layer Dwgs.User) (width 0.15))
   (pad "" np_thru_hole circle (at 0 0) (size 5.1 5.1) (drill 5.1) (layers *.Cu *.Mask))
   (pad 2 thru_hole oval (at 0 5.9) (size 2.2 1.5) (drill oval 1 0.3) (layers *.Cu B.Mask))
   (pad 1 thru_hole oval (at -5 3.8) (size 2.2 1.5) (drill oval 1 0.3) (layers *.Cu B.Mask))
