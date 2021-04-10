@@ -69,9 +69,19 @@ module circuit_board() {
 
 module rubber_base() {
     module rubber_hole_choc_v1() {
+        module pad_hole() {
+            minkowski() {
+                cylinder(4, d = 2, center = true);
+                cube([2.2, 0.01, 0.01], center = true);
+            }
+        }
+
         cylinder((3.2 - circuit_thickness) * 2, d = 3.3, center = true);
         translate([ 5.5, 0]) cylinder((2.9 - circuit_thickness) * 2, d = 2.2, center = true);
         translate([-5.5, 0]) cylinder((2.9 - circuit_thickness) * 2, d = 2.2, center = true);
+
+        translate([0, 5.9]) pad_hole();
+        translate([5, 3.8]) pad_hole();
     }
 
     module pro_micro_hole() {
@@ -111,9 +121,19 @@ module rubber_base() {
 
 module rubber_thumb() {
     module rubber_hole_choc_v1() {
+        module pad_hole() {
+            minkowski() {
+                cylinder(4, d = 2, center = true);
+                cube([2.2, 0.01, 0.01], center = true);
+            }
+        }
+
         cylinder(10, d = 3.3, center = true);
         translate([ 5.5, 0]) cylinder(10, d = 2.2, center = true);
         translate([-5.5, 0]) cylinder(10, d = 2.2, center = true);
+
+        translate([0, 5.9]) pad_hole();
+        translate([5, 3.8]) pad_hole();
     }
 
     n = [thumb_position.y + 4, circuit_z + tan(tilt_a) * thumb_position.y];
