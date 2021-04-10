@@ -1,0 +1,1963 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L kbd:ProMicro U1
+U 1 1 60682507
+P 2000 1750
+F 0 "U1" H 2000 2587 60  0000 C CNN
+F 1 "ProMicro" H 2000 2481 60  0000 C CNN
+F 2 "kbd:ProMicro_v3.5" H 2100 700 60  0001 C CNN
+F 3 "" H 2100 700 60  0000 C CNN
+	1    2000 1750
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW1
+U 1 1 606838DA
+P 4500 1300
+F 0 "SW1" H 4500 1555 50  0000 C CNN
+F 1 "SW_PUSH" H 4500 1464 50  0000 C CNN
+F 2 "kbd:ResetSW_1side" H 4500 1300 50  0001 C CNN
+F 3 "" H 4500 1300 50  0000 C CNN
+	1    4500 1300
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:MJ-4PP-9 J1
+U 1 1 60683EFF
+P 4650 2250
+F 0 "J1" H 4681 2526 50  0000 C CNN
+F 1 "MJ-4PP-9" H 4681 2435 50  0000 C CNN
+F 2 "kbd:MJ-4PP-9_1side" H 4925 2425 50  0001 C CNN
+F 3 "~" H 4925 2425 50  0001 C CNN
+	1    4650 2250
+	-1   0    0    -1  
+$EndComp
+$Comp
+L kbd:MJ-4PP-9 J2
+U 1 1 60684601
+P 6850 2250
+F 0 "J2" H 6881 2526 50  0000 C CNN
+F 1 "MJ-4PP-9" H 6881 2435 50  0000 C CNN
+F 2 "kbd:MJ-4PP-9_1side" H 7125 2425 50  0001 C CNN
+F 3 "~" H 7125 2425 50  0001 C CNN
+	1    6850 2250
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW2
+U 1 1 60684DEF
+P 7000 1300
+F 0 "SW2" H 7000 1555 50  0000 C CNN
+F 1 "SW_PUSH" H 7000 1464 50  0000 C CNN
+F 2 "kbd:ResetSW_1side" H 7000 1300 50  0001 C CNN
+F 3 "" H 7000 1300 50  0000 C CNN
+	1    7000 1300
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:ProMicro U2
+U 1 1 60698B25
+P 9500 1750
+F 0 "U2" H 9500 2587 60  0000 C CNN
+F 1 "ProMicro" H 9500 2481 60  0000 C CNN
+F 2 "kbd:ProMicro_v3.5" H 9600 700 60  0001 C CNN
+F 3 "" H 9600 700 60  0000 C CNN
+	1    9500 1750
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW3
+U 1 1 606A126F
+P 1300 3350
+F 0 "SW3" H 1300 3605 50  0000 C CNN
+F 1 "SW_PUSH" H 1300 3514 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 1300 3350 50  0001 C CNN
+F 3 "" H 1300 3350 50  0000 C CNN
+	1    1300 3350
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW4
+U 1 1 606A1A46
+P 2100 3350
+F 0 "SW4" H 2100 3605 50  0000 C CNN
+F 1 "SW_PUSH" H 2100 3514 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 2100 3350 50  0001 C CNN
+F 3 "" H 2100 3350 50  0000 C CNN
+	1    2100 3350
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW5
+U 1 1 606A22DA
+P 2900 3350
+F 0 "SW5" H 2900 3605 50  0000 C CNN
+F 1 "SW_PUSH" H 2900 3514 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 2900 3350 50  0001 C CNN
+F 3 "" H 2900 3350 50  0000 C CNN
+	1    2900 3350
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW6
+U 1 1 606A29B7
+P 3700 3350
+F 0 "SW6" H 3700 3605 50  0000 C CNN
+F 1 "SW_PUSH" H 3700 3514 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 3700 3350 50  0001 C CNN
+F 3 "" H 3700 3350 50  0000 C CNN
+	1    3700 3350
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW7
+U 1 1 606A2F5F
+P 4500 3350
+F 0 "SW7" H 4500 3605 50  0000 C CNN
+F 1 "SW_PUSH" H 4500 3514 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 4500 3350 50  0001 C CNN
+F 3 "" H 4500 3350 50  0000 C CNN
+	1    4500 3350
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW8
+U 1 1 606A35CB
+P 5300 3350
+F 0 "SW8" H 5300 3605 50  0000 C CNN
+F 1 "SW_PUSH" H 5300 3514 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 5300 3350 50  0001 C CNN
+F 3 "" H 5300 3350 50  0000 C CNN
+	1    5300 3350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:D D1
+U 1 1 606A3F04
+P 1600 3500
+F 0 "D1" V 1646 3420 50  0000 R CNN
+F 1 "D" V 1555 3420 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 1600 3500 50  0001 C CNN
+F 3 "~" H 1600 3500 50  0001 C CNN
+	1    1600 3500
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D2
+U 1 1 606A8D9D
+P 2400 3500
+F 0 "D2" V 2446 3420 50  0000 R CNN
+F 1 "D" V 2355 3420 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 2400 3500 50  0001 C CNN
+F 3 "~" H 2400 3500 50  0001 C CNN
+	1    2400 3500
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D3
+U 1 1 606A93BF
+P 3200 3500
+F 0 "D3" V 3246 3420 50  0000 R CNN
+F 1 "D" V 3155 3420 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 3200 3500 50  0001 C CNN
+F 3 "~" H 3200 3500 50  0001 C CNN
+	1    3200 3500
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D4
+U 1 1 606A9980
+P 4000 3500
+F 0 "D4" V 4046 3420 50  0000 R CNN
+F 1 "D" V 3955 3420 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 4000 3500 50  0001 C CNN
+F 3 "~" H 4000 3500 50  0001 C CNN
+	1    4000 3500
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D5
+U 1 1 606AA1BD
+P 4800 3500
+F 0 "D5" V 4846 3420 50  0000 R CNN
+F 1 "D" V 4755 3420 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 4800 3500 50  0001 C CNN
+F 3 "~" H 4800 3500 50  0001 C CNN
+	1    4800 3500
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D6
+U 1 1 606AA9E8
+P 5600 3500
+F 0 "D6" V 5646 3420 50  0000 R CNN
+F 1 "D" V 5555 3420 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 5600 3500 50  0001 C CNN
+F 3 "~" H 5600 3500 50  0001 C CNN
+	1    5600 3500
+	0    -1   -1   0   
+$EndComp
+$Comp
+L kbd:SW_PUSH SW15
+U 1 1 606AB10F
+P 1300 4000
+F 0 "SW15" H 1300 4255 50  0000 C CNN
+F 1 "SW_PUSH" H 1300 4164 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 1300 4000 50  0001 C CNN
+F 3 "" H 1300 4000 50  0000 C CNN
+	1    1300 4000
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW16
+U 1 1 606ABA75
+P 2100 4000
+F 0 "SW16" H 2100 4255 50  0000 C CNN
+F 1 "SW_PUSH" H 2100 4164 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 2100 4000 50  0001 C CNN
+F 3 "" H 2100 4000 50  0000 C CNN
+	1    2100 4000
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW17
+U 1 1 606AC134
+P 2900 4000
+F 0 "SW17" H 2900 4255 50  0000 C CNN
+F 1 "SW_PUSH" H 2900 4164 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 2900 4000 50  0001 C CNN
+F 3 "" H 2900 4000 50  0000 C CNN
+	1    2900 4000
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW18
+U 1 1 606AC89E
+P 3700 4000
+F 0 "SW18" H 3700 4255 50  0000 C CNN
+F 1 "SW_PUSH" H 3700 4164 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 3700 4000 50  0001 C CNN
+F 3 "" H 3700 4000 50  0000 C CNN
+	1    3700 4000
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW19
+U 1 1 606ACE7D
+P 4500 4000
+F 0 "SW19" H 4500 4255 50  0000 C CNN
+F 1 "SW_PUSH" H 4500 4164 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 4500 4000 50  0001 C CNN
+F 3 "" H 4500 4000 50  0000 C CNN
+	1    4500 4000
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW20
+U 1 1 606AD48E
+P 5300 4000
+F 0 "SW20" H 5300 4255 50  0000 C CNN
+F 1 "SW_PUSH" H 5300 4164 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 5300 4000 50  0001 C CNN
+F 3 "" H 5300 4000 50  0000 C CNN
+	1    5300 4000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:D D13
+U 1 1 606AE35B
+P 1600 4150
+F 0 "D13" V 1646 4070 50  0000 R CNN
+F 1 "D" V 1555 4070 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 1600 4150 50  0001 C CNN
+F 3 "~" H 1600 4150 50  0001 C CNN
+	1    1600 4150
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D14
+U 1 1 606AEB4D
+P 2400 4150
+F 0 "D14" V 2446 4070 50  0000 R CNN
+F 1 "D" V 2355 4070 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 2400 4150 50  0001 C CNN
+F 3 "~" H 2400 4150 50  0001 C CNN
+	1    2400 4150
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D15
+U 1 1 606AF241
+P 3200 4150
+F 0 "D15" V 3246 4070 50  0000 R CNN
+F 1 "D" V 3155 4070 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 3200 4150 50  0001 C CNN
+F 3 "~" H 3200 4150 50  0001 C CNN
+	1    3200 4150
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D16
+U 1 1 606AFB6F
+P 4000 4150
+F 0 "D16" V 4046 4070 50  0000 R CNN
+F 1 "D" V 3955 4070 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 4000 4150 50  0001 C CNN
+F 3 "~" H 4000 4150 50  0001 C CNN
+	1    4000 4150
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D17
+U 1 1 606B0530
+P 4800 4150
+F 0 "D17" V 4846 4070 50  0000 R CNN
+F 1 "D" V 4755 4070 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 4800 4150 50  0001 C CNN
+F 3 "~" H 4800 4150 50  0001 C CNN
+	1    4800 4150
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D18
+U 1 1 606B0F02
+P 5600 4150
+F 0 "D18" V 5646 4070 50  0000 R CNN
+F 1 "D" V 5555 4070 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 5600 4150 50  0001 C CNN
+F 3 "~" H 5600 4150 50  0001 C CNN
+	1    5600 4150
+	0    -1   -1   0   
+$EndComp
+$Comp
+L kbd:SW_PUSH SW27
+U 1 1 606B26B4
+P 1300 4650
+F 0 "SW27" H 1300 4905 50  0000 C CNN
+F 1 "SW_PUSH" H 1300 4814 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 1300 4650 50  0001 C CNN
+F 3 "" H 1300 4650 50  0000 C CNN
+	1    1300 4650
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW28
+U 1 1 606B3099
+P 2100 4650
+F 0 "SW28" H 2100 4905 50  0000 C CNN
+F 1 "SW_PUSH" H 2100 4814 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 2100 4650 50  0001 C CNN
+F 3 "" H 2100 4650 50  0000 C CNN
+	1    2100 4650
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW29
+U 1 1 606B3A94
+P 2900 4650
+F 0 "SW29" H 2900 4905 50  0000 C CNN
+F 1 "SW_PUSH" H 2900 4814 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 2900 4650 50  0001 C CNN
+F 3 "" H 2900 4650 50  0000 C CNN
+	1    2900 4650
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW30
+U 1 1 606B44FF
+P 3700 4650
+F 0 "SW30" H 3700 4905 50  0000 C CNN
+F 1 "SW_PUSH" H 3700 4814 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 3700 4650 50  0001 C CNN
+F 3 "" H 3700 4650 50  0000 C CNN
+	1    3700 4650
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW31
+U 1 1 606B4EFF
+P 4500 4650
+F 0 "SW31" H 4500 4905 50  0000 C CNN
+F 1 "SW_PUSH" H 4500 4814 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 4500 4650 50  0001 C CNN
+F 3 "" H 4500 4650 50  0000 C CNN
+	1    4500 4650
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW32
+U 1 1 606B595B
+P 5300 4650
+F 0 "SW32" H 5300 4905 50  0000 C CNN
+F 1 "SW_PUSH" H 5300 4814 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 5300 4650 50  0001 C CNN
+F 3 "" H 5300 4650 50  0000 C CNN
+	1    5300 4650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:D D25
+U 1 1 606B74BF
+P 1600 4800
+F 0 "D25" V 1646 4720 50  0000 R CNN
+F 1 "D" V 1555 4720 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 1600 4800 50  0001 C CNN
+F 3 "~" H 1600 4800 50  0001 C CNN
+	1    1600 4800
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D26
+U 1 1 606B8062
+P 2400 4800
+F 0 "D26" V 2446 4720 50  0000 R CNN
+F 1 "D" V 2355 4720 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 2400 4800 50  0001 C CNN
+F 3 "~" H 2400 4800 50  0001 C CNN
+	1    2400 4800
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D27
+U 1 1 606B8C2F
+P 3200 4800
+F 0 "D27" V 3246 4720 50  0000 R CNN
+F 1 "D" V 3155 4720 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 3200 4800 50  0001 C CNN
+F 3 "~" H 3200 4800 50  0001 C CNN
+	1    3200 4800
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D28
+U 1 1 606B97DB
+P 4000 4800
+F 0 "D28" V 4046 4720 50  0000 R CNN
+F 1 "D" V 3955 4720 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 4000 4800 50  0001 C CNN
+F 3 "~" H 4000 4800 50  0001 C CNN
+	1    4000 4800
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D29
+U 1 1 606BA4E7
+P 4800 4800
+F 0 "D29" V 4846 4720 50  0000 R CNN
+F 1 "D" V 4755 4720 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 4800 4800 50  0001 C CNN
+F 3 "~" H 4800 4800 50  0001 C CNN
+	1    4800 4800
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D30
+U 1 1 606BB119
+P 5600 4800
+F 0 "D30" V 5646 4720 50  0000 R CNN
+F 1 "D" V 5555 4720 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 5600 4800 50  0001 C CNN
+F 3 "~" H 5600 4800 50  0001 C CNN
+	1    5600 4800
+	0    -1   -1   0   
+$EndComp
+$Comp
+L kbd:SW_PUSH SW39
+U 1 1 606BBAF6
+P 1300 5300
+F 0 "SW39" H 1300 5555 50  0000 C CNN
+F 1 "SW_PUSH" H 1300 5464 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 1300 5300 50  0001 C CNN
+F 3 "" H 1300 5300 50  0000 C CNN
+	1    1300 5300
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW40
+U 1 1 606BCA54
+P 2100 5300
+F 0 "SW40" H 2100 5555 50  0000 C CNN
+F 1 "SW_PUSH" H 2100 5464 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 2100 5300 50  0001 C CNN
+F 3 "" H 2100 5300 50  0000 C CNN
+	1    2100 5300
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW43
+U 1 1 606BD6CE
+P 4500 5300
+F 0 "SW43" H 4500 5555 50  0000 C CNN
+F 1 "SW_PUSH" H 4500 5464 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 4500 5300 50  0001 C CNN
+F 3 "" H 4500 5300 50  0000 C CNN
+	1    4500 5300
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW44
+U 1 1 606BE3B6
+P 5300 5300
+F 0 "SW44" H 5300 5555 50  0000 C CNN
+F 1 "SW_PUSH" H 5300 5464 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 5300 5300 50  0001 C CNN
+F 3 "" H 5300 5300 50  0000 C CNN
+	1    5300 5300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:D D37
+U 1 1 606BF9E9
+P 1600 5450
+F 0 "D37" V 1646 5370 50  0000 R CNN
+F 1 "D" V 1555 5370 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 1600 5450 50  0001 C CNN
+F 3 "~" H 1600 5450 50  0001 C CNN
+	1    1600 5450
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D38
+U 1 1 606C0683
+P 2400 5450
+F 0 "D38" V 2446 5370 50  0000 R CNN
+F 1 "D" V 2355 5370 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 2400 5450 50  0001 C CNN
+F 3 "~" H 2400 5450 50  0001 C CNN
+	1    2400 5450
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D41
+U 1 1 606C1093
+P 4800 5450
+F 0 "D41" V 4846 5370 50  0000 R CNN
+F 1 "D" V 4755 5370 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 4800 5450 50  0001 C CNN
+F 3 "~" H 4800 5450 50  0001 C CNN
+	1    4800 5450
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D42
+U 1 1 606C1ACC
+P 5600 5450
+F 0 "D42" V 5646 5370 50  0000 R CNN
+F 1 "D" V 5555 5370 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 5600 5450 50  0001 C CNN
+F 3 "~" H 5600 5450 50  0001 C CNN
+	1    5600 5450
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5600 3650 4800 3650
+Wire Wire Line
+	4800 3650 4000 3650
+Connection ~ 4800 3650
+Wire Wire Line
+	4000 3650 3200 3650
+Connection ~ 4000 3650
+Wire Wire Line
+	3200 3650 2400 3650
+Connection ~ 3200 3650
+Wire Wire Line
+	2400 3650 1600 3650
+Connection ~ 2400 3650
+Wire Wire Line
+	5000 5300 5000 4650
+Wire Wire Line
+	5000 4650 5000 4000
+Connection ~ 5000 4650
+Wire Wire Line
+	5000 4000 5000 3350
+Connection ~ 5000 4000
+Wire Wire Line
+	5000 3350 5000 3000
+Connection ~ 5000 3350
+Wire Wire Line
+	4200 5300 4200 4650
+Wire Wire Line
+	4200 4650 4200 4000
+Connection ~ 4200 4650
+Wire Wire Line
+	4200 4000 4200 3350
+Connection ~ 4200 4000
+Wire Wire Line
+	4200 3350 4200 3000
+Connection ~ 4200 3350
+Wire Wire Line
+	3400 4650 3400 4000
+Wire Wire Line
+	3400 4000 3400 3350
+Connection ~ 3400 4000
+Wire Wire Line
+	3400 3350 3400 3000
+Connection ~ 3400 3350
+Wire Wire Line
+	2600 4650 2600 4000
+Wire Wire Line
+	2600 4000 2600 3350
+Connection ~ 2600 4000
+Wire Wire Line
+	2600 3350 2600 3000
+Connection ~ 2600 3350
+Wire Wire Line
+	1800 4650 1800 4000
+Wire Wire Line
+	1800 4000 1800 3350
+Connection ~ 1800 4000
+Wire Wire Line
+	1800 3350 1800 3000
+Connection ~ 1800 3350
+Wire Wire Line
+	1000 4650 1000 4000
+Wire Wire Line
+	1000 4000 1000 3350
+Connection ~ 1000 4000
+Wire Wire Line
+	1000 3350 1000 3000
+Connection ~ 1000 3350
+Wire Wire Line
+	1600 3650 900  3650
+Connection ~ 1600 3650
+Wire Wire Line
+	5600 4300 4800 4300
+Wire Wire Line
+	4800 4300 4000 4300
+Connection ~ 4800 4300
+Wire Wire Line
+	4000 4300 3200 4300
+Connection ~ 4000 4300
+Wire Wire Line
+	3200 4300 2400 4300
+Connection ~ 3200 4300
+Wire Wire Line
+	2400 4300 1600 4300
+Connection ~ 2400 4300
+Wire Wire Line
+	1600 4300 900  4300
+Connection ~ 1600 4300
+Wire Wire Line
+	5600 4950 4800 4950
+Wire Wire Line
+	4800 4950 4000 4950
+Connection ~ 4800 4950
+Wire Wire Line
+	4000 4950 3200 4950
+Connection ~ 4000 4950
+Wire Wire Line
+	3200 4950 2400 4950
+Connection ~ 3200 4950
+Wire Wire Line
+	2400 4950 1600 4950
+Connection ~ 2400 4950
+Wire Wire Line
+	1600 4950 900  4950
+Connection ~ 1600 4950
+Wire Wire Line
+	5600 5600 4800 5600
+Connection ~ 4800 5600
+Text GLabel 900  3650 0    50   Input ~ 0
+l_row0
+Text GLabel 900  4300 0    50   Input ~ 0
+l_row1
+Text GLabel 900  4950 0    50   Input ~ 0
+l_row2
+Text GLabel 900  5600 0    50   Input ~ 0
+l_row3
+Text GLabel 1000 3000 1    50   Input ~ 0
+l_col0
+Text GLabel 1800 3000 1    50   Input ~ 0
+l_col1
+Text GLabel 2600 3000 1    50   Input ~ 0
+l_col2
+Text GLabel 3400 3000 1    50   Input ~ 0
+l_col3
+Text GLabel 4200 3000 1    50   Input ~ 0
+l_col4
+Text GLabel 5000 3000 1    50   Input ~ 0
+l_col5
+Connection ~ 1600 5600
+Wire Wire Line
+	1600 5600 900  5600
+Wire Wire Line
+	1600 5600 2400 5600
+Connection ~ 2400 5600
+Wire Wire Line
+	2400 5600 3200 5600
+Wire Wire Line
+	1800 5300 1800 4650
+Connection ~ 1800 4650
+Wire Wire Line
+	1000 5300 1000 4650
+Connection ~ 1000 4650
+$Comp
+L kbd:SW_PUSH SW9
+U 1 1 607479BB
+P 6300 3350
+F 0 "SW9" H 6300 3605 50  0000 C CNN
+F 1 "SW_PUSH" H 6300 3514 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 6300 3350 50  0001 C CNN
+F 3 "" H 6300 3350 50  0000 C CNN
+	1    6300 3350
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW10
+U 1 1 6074B6BB
+P 7100 3350
+F 0 "SW10" H 7100 3605 50  0000 C CNN
+F 1 "SW_PUSH" H 7100 3514 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 7100 3350 50  0001 C CNN
+F 3 "" H 7100 3350 50  0000 C CNN
+	1    7100 3350
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW11
+U 1 1 6074C034
+P 7900 3350
+F 0 "SW11" H 7900 3605 50  0000 C CNN
+F 1 "SW_PUSH" H 7900 3514 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 7900 3350 50  0001 C CNN
+F 3 "" H 7900 3350 50  0000 C CNN
+	1    7900 3350
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW12
+U 1 1 6074CC28
+P 8700 3350
+F 0 "SW12" H 8700 3605 50  0000 C CNN
+F 1 "SW_PUSH" H 8700 3514 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 8700 3350 50  0001 C CNN
+F 3 "" H 8700 3350 50  0000 C CNN
+	1    8700 3350
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW13
+U 1 1 6074D221
+P 9500 3350
+F 0 "SW13" H 9500 3605 50  0000 C CNN
+F 1 "SW_PUSH" H 9500 3514 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 9500 3350 50  0001 C CNN
+F 3 "" H 9500 3350 50  0000 C CNN
+	1    9500 3350
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW14
+U 1 1 6074ED54
+P 10300 3350
+F 0 "SW14" H 10300 3605 50  0000 C CNN
+F 1 "SW_PUSH" H 10300 3514 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 10300 3350 50  0001 C CNN
+F 3 "" H 10300 3350 50  0000 C CNN
+	1    10300 3350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:D D7
+U 1 1 60752B51
+P 6600 3500
+F 0 "D7" V 6646 3420 50  0000 R CNN
+F 1 "D" V 6555 3420 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 6600 3500 50  0001 C CNN
+F 3 "~" H 6600 3500 50  0001 C CNN
+	1    6600 3500
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D8
+U 1 1 6075364D
+P 7400 3500
+F 0 "D8" V 7446 3420 50  0000 R CNN
+F 1 "D" V 7355 3420 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 7400 3500 50  0001 C CNN
+F 3 "~" H 7400 3500 50  0001 C CNN
+	1    7400 3500
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D9
+U 1 1 607541BE
+P 8200 3500
+F 0 "D9" V 8246 3420 50  0000 R CNN
+F 1 "D" V 8155 3420 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 8200 3500 50  0001 C CNN
+F 3 "~" H 8200 3500 50  0001 C CNN
+	1    8200 3500
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D10
+U 1 1 60754D2C
+P 9000 3500
+F 0 "D10" V 9046 3420 50  0000 R CNN
+F 1 "D" V 8955 3420 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 9000 3500 50  0001 C CNN
+F 3 "~" H 9000 3500 50  0001 C CNN
+	1    9000 3500
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D11
+U 1 1 6075592D
+P 9800 3500
+F 0 "D11" V 9846 3420 50  0000 R CNN
+F 1 "D" V 9755 3420 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 9800 3500 50  0001 C CNN
+F 3 "~" H 9800 3500 50  0001 C CNN
+	1    9800 3500
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D12
+U 1 1 6075642C
+P 10600 3500
+F 0 "D12" V 10646 3420 50  0000 R CNN
+F 1 "D" V 10555 3420 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 10600 3500 50  0001 C CNN
+F 3 "~" H 10600 3500 50  0001 C CNN
+	1    10600 3500
+	0    -1   -1   0   
+$EndComp
+$Comp
+L kbd:SW_PUSH SW21
+U 1 1 60759C52
+P 6300 4000
+F 0 "SW21" H 6300 4255 50  0000 C CNN
+F 1 "SW_PUSH" H 6300 4164 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 6300 4000 50  0001 C CNN
+F 3 "" H 6300 4000 50  0000 C CNN
+	1    6300 4000
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW22
+U 1 1 6075A931
+P 7100 4000
+F 0 "SW22" H 7100 4255 50  0000 C CNN
+F 1 "SW_PUSH" H 7100 4164 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 7100 4000 50  0001 C CNN
+F 3 "" H 7100 4000 50  0000 C CNN
+	1    7100 4000
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW23
+U 1 1 6075B46D
+P 7900 4000
+F 0 "SW23" H 7900 4255 50  0000 C CNN
+F 1 "SW_PUSH" H 7900 4164 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 7900 4000 50  0001 C CNN
+F 3 "" H 7900 4000 50  0000 C CNN
+	1    7900 4000
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW24
+U 1 1 6075BF90
+P 8700 4000
+F 0 "SW24" H 8700 4255 50  0000 C CNN
+F 1 "SW_PUSH" H 8700 4164 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 8700 4000 50  0001 C CNN
+F 3 "" H 8700 4000 50  0000 C CNN
+	1    8700 4000
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW25
+U 1 1 6075CC16
+P 9500 4000
+F 0 "SW25" H 9500 4255 50  0000 C CNN
+F 1 "SW_PUSH" H 9500 4164 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 9500 4000 50  0001 C CNN
+F 3 "" H 9500 4000 50  0000 C CNN
+	1    9500 4000
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW26
+U 1 1 6075D935
+P 10300 4000
+F 0 "SW26" H 10300 4255 50  0000 C CNN
+F 1 "SW_PUSH" H 10300 4164 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 10300 4000 50  0001 C CNN
+F 3 "" H 10300 4000 50  0000 C CNN
+	1    10300 4000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:D D19
+U 1 1 6075E74E
+P 6600 4150
+F 0 "D19" V 6646 4070 50  0000 R CNN
+F 1 "D" V 6555 4070 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 6600 4150 50  0001 C CNN
+F 3 "~" H 6600 4150 50  0001 C CNN
+	1    6600 4150
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D20
+U 1 1 6075F494
+P 7400 4150
+F 0 "D20" V 7446 4070 50  0000 R CNN
+F 1 "D" V 7355 4070 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 7400 4150 50  0001 C CNN
+F 3 "~" H 7400 4150 50  0001 C CNN
+	1    7400 4150
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D21
+U 1 1 60760204
+P 8200 4150
+F 0 "D21" V 8246 4070 50  0000 R CNN
+F 1 "D" V 8155 4070 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 8200 4150 50  0001 C CNN
+F 3 "~" H 8200 4150 50  0001 C CNN
+	1    8200 4150
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D22
+U 1 1 60760FB2
+P 9000 4150
+F 0 "D22" V 9046 4070 50  0000 R CNN
+F 1 "D" V 8955 4070 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 9000 4150 50  0001 C CNN
+F 3 "~" H 9000 4150 50  0001 C CNN
+	1    9000 4150
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D23
+U 1 1 60761D44
+P 9800 4150
+F 0 "D23" V 9846 4070 50  0000 R CNN
+F 1 "D" V 9755 4070 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 9800 4150 50  0001 C CNN
+F 3 "~" H 9800 4150 50  0001 C CNN
+	1    9800 4150
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D24
+U 1 1 60762B41
+P 10600 4150
+F 0 "D24" V 10646 4070 50  0000 R CNN
+F 1 "D" V 10555 4070 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 10600 4150 50  0001 C CNN
+F 3 "~" H 10600 4150 50  0001 C CNN
+	1    10600 4150
+	0    -1   -1   0   
+$EndComp
+$Comp
+L kbd:SW_PUSH SW33
+U 1 1 60763993
+P 6300 4650
+F 0 "SW33" H 6300 4905 50  0000 C CNN
+F 1 "SW_PUSH" H 6300 4814 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 6300 4650 50  0001 C CNN
+F 3 "" H 6300 4650 50  0000 C CNN
+	1    6300 4650
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW34
+U 1 1 60764606
+P 7100 4650
+F 0 "SW34" H 7100 4905 50  0000 C CNN
+F 1 "SW_PUSH" H 7100 4814 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 7100 4650 50  0001 C CNN
+F 3 "" H 7100 4650 50  0000 C CNN
+	1    7100 4650
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW35
+U 1 1 60765481
+P 7900 4650
+F 0 "SW35" H 7900 4905 50  0000 C CNN
+F 1 "SW_PUSH" H 7900 4814 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 7900 4650 50  0001 C CNN
+F 3 "" H 7900 4650 50  0000 C CNN
+	1    7900 4650
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW36
+U 1 1 60765E50
+P 8700 4650
+F 0 "SW36" H 8700 4905 50  0000 C CNN
+F 1 "SW_PUSH" H 8700 4814 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 8700 4650 50  0001 C CNN
+F 3 "" H 8700 4650 50  0000 C CNN
+	1    8700 4650
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW37
+U 1 1 60766BF5
+P 9500 4650
+F 0 "SW37" H 9500 4905 50  0000 C CNN
+F 1 "SW_PUSH" H 9500 4814 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 9500 4650 50  0001 C CNN
+F 3 "" H 9500 4650 50  0000 C CNN
+	1    9500 4650
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW38
+U 1 1 60767B8B
+P 10300 4650
+F 0 "SW38" H 10300 4905 50  0000 C CNN
+F 1 "SW_PUSH" H 10300 4814 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 10300 4650 50  0001 C CNN
+F 3 "" H 10300 4650 50  0000 C CNN
+	1    10300 4650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:D D31
+U 1 1 60768A2C
+P 6600 4800
+F 0 "D31" V 6646 4720 50  0000 R CNN
+F 1 "D" V 6555 4720 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 6600 4800 50  0001 C CNN
+F 3 "~" H 6600 4800 50  0001 C CNN
+	1    6600 4800
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D32
+U 1 1 6076992D
+P 7400 4800
+F 0 "D32" V 7446 4720 50  0000 R CNN
+F 1 "D" V 7355 4720 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 7400 4800 50  0001 C CNN
+F 3 "~" H 7400 4800 50  0001 C CNN
+	1    7400 4800
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D33
+U 1 1 6076AA74
+P 8200 4800
+F 0 "D33" V 8246 4720 50  0000 R CNN
+F 1 "D" V 8155 4720 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 8200 4800 50  0001 C CNN
+F 3 "~" H 8200 4800 50  0001 C CNN
+	1    8200 4800
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D34
+U 1 1 6076B988
+P 9000 4800
+F 0 "D34" V 9046 4720 50  0000 R CNN
+F 1 "D" V 8955 4720 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 9000 4800 50  0001 C CNN
+F 3 "~" H 9000 4800 50  0001 C CNN
+	1    9000 4800
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D35
+U 1 1 6076CA51
+P 9800 4800
+F 0 "D35" V 9846 4720 50  0000 R CNN
+F 1 "D" V 9755 4720 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 9800 4800 50  0001 C CNN
+F 3 "~" H 9800 4800 50  0001 C CNN
+	1    9800 4800
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D36
+U 1 1 6076DB03
+P 10600 4800
+F 0 "D36" V 10646 4720 50  0000 R CNN
+F 1 "D" V 10555 4720 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 10600 4800 50  0001 C CNN
+F 3 "~" H 10600 4800 50  0001 C CNN
+	1    10600 4800
+	0    -1   -1   0   
+$EndComp
+$Comp
+L kbd:SW_PUSH SW45
+U 1 1 6076EC41
+P 6300 5300
+F 0 "SW45" H 6300 5555 50  0000 C CNN
+F 1 "SW_PUSH" H 6300 5464 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 6300 5300 50  0001 C CNN
+F 3 "" H 6300 5300 50  0000 C CNN
+	1    6300 5300
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW46
+U 1 1 6076FE42
+P 7100 5300
+F 0 "SW46" H 7100 5555 50  0000 C CNN
+F 1 "SW_PUSH" H 7100 5464 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 7100 5300 50  0001 C CNN
+F 3 "" H 7100 5300 50  0000 C CNN
+	1    7100 5300
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW49
+U 1 1 60770E95
+P 9500 5300
+F 0 "SW49" H 9500 5555 50  0000 C CNN
+F 1 "SW_PUSH" H 9500 5464 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 9500 5300 50  0001 C CNN
+F 3 "" H 9500 5300 50  0000 C CNN
+	1    9500 5300
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW50
+U 1 1 607720AF
+P 10300 5300
+F 0 "SW50" H 10300 5555 50  0000 C CNN
+F 1 "SW_PUSH" H 10300 5464 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 10300 5300 50  0001 C CNN
+F 3 "" H 10300 5300 50  0000 C CNN
+	1    10300 5300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:D D43
+U 1 1 607731AE
+P 6600 5450
+F 0 "D43" V 6646 5370 50  0000 R CNN
+F 1 "D" V 6555 5370 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 6600 5450 50  0001 C CNN
+F 3 "~" H 6600 5450 50  0001 C CNN
+	1    6600 5450
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D44
+U 1 1 6077433A
+P 7400 5450
+F 0 "D44" V 7446 5370 50  0000 R CNN
+F 1 "D" V 7355 5370 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 7400 5450 50  0001 C CNN
+F 3 "~" H 7400 5450 50  0001 C CNN
+	1    7400 5450
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D47
+U 1 1 607755A4
+P 9800 5450
+F 0 "D47" V 9846 5370 50  0000 R CNN
+F 1 "D" V 9755 5370 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 9800 5450 50  0001 C CNN
+F 3 "~" H 9800 5450 50  0001 C CNN
+	1    9800 5450
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D48
+U 1 1 6077CCD8
+P 10600 5450
+F 0 "D48" V 10646 5370 50  0000 R CNN
+F 1 "D" V 10555 5370 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 10600 5450 50  0001 C CNN
+F 3 "~" H 10600 5450 50  0001 C CNN
+	1    10600 5450
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	6000 5300 6000 4650
+Wire Wire Line
+	6000 4650 6000 4000
+Connection ~ 6000 4650
+Wire Wire Line
+	6000 4000 6000 3350
+Connection ~ 6000 4000
+Wire Wire Line
+	6000 3350 6000 3000
+Connection ~ 6000 3350
+Wire Wire Line
+	6800 5300 6800 4650
+Wire Wire Line
+	6800 4650 6800 4000
+Connection ~ 6800 4650
+Wire Wire Line
+	6800 4000 6800 3350
+Connection ~ 6800 4000
+Wire Wire Line
+	6800 3350 6800 3000
+Connection ~ 6800 3350
+Wire Wire Line
+	7600 4650 7600 4000
+Wire Wire Line
+	7600 4000 7600 3350
+Connection ~ 7600 4000
+Wire Wire Line
+	7600 3350 7600 3000
+Connection ~ 7600 3350
+Wire Wire Line
+	8400 4650 8400 4000
+Wire Wire Line
+	8400 4000 8400 3350
+Connection ~ 8400 4000
+Wire Wire Line
+	8400 3350 8400 3000
+Connection ~ 8400 3350
+Wire Wire Line
+	9200 5300 9200 4650
+Wire Wire Line
+	9200 4650 9200 4000
+Connection ~ 9200 4650
+Wire Wire Line
+	9200 4000 9200 3350
+Connection ~ 9200 4000
+Wire Wire Line
+	9200 3350 9200 3000
+Connection ~ 9200 3350
+Wire Wire Line
+	10000 5300 10000 4650
+Wire Wire Line
+	10000 4650 10000 4000
+Connection ~ 10000 4650
+Wire Wire Line
+	10000 4000 10000 3350
+Connection ~ 10000 4000
+Wire Wire Line
+	10000 3350 10000 3000
+Connection ~ 10000 3350
+Wire Wire Line
+	6600 3650 7400 3650
+Wire Wire Line
+	7400 3650 8200 3650
+Connection ~ 7400 3650
+Wire Wire Line
+	8200 3650 9000 3650
+Connection ~ 8200 3650
+Wire Wire Line
+	9000 3650 9800 3650
+Connection ~ 9000 3650
+Wire Wire Line
+	9800 3650 10600 3650
+Connection ~ 9800 3650
+Wire Wire Line
+	10600 3650 10800 3650
+Connection ~ 10600 3650
+Wire Wire Line
+	6600 4300 7400 4300
+Wire Wire Line
+	7400 4300 8200 4300
+Connection ~ 7400 4300
+Wire Wire Line
+	8200 4300 9000 4300
+Connection ~ 8200 4300
+Wire Wire Line
+	9000 4300 9800 4300
+Connection ~ 9000 4300
+Wire Wire Line
+	9800 4300 10600 4300
+Connection ~ 9800 4300
+Wire Wire Line
+	10600 4300 10800 4300
+Connection ~ 10600 4300
+Wire Wire Line
+	6600 4950 7400 4950
+Wire Wire Line
+	7400 4950 8200 4950
+Connection ~ 7400 4950
+Wire Wire Line
+	8200 4950 9000 4950
+Connection ~ 8200 4950
+Wire Wire Line
+	9000 4950 9800 4950
+Connection ~ 9000 4950
+Wire Wire Line
+	9800 4950 10600 4950
+Connection ~ 9800 4950
+Wire Wire Line
+	10600 4950 10800 4950
+Connection ~ 10600 4950
+Wire Wire Line
+	6600 5600 7400 5600
+Wire Wire Line
+	7400 5600 8200 5600
+Connection ~ 7400 5600
+Wire Wire Line
+	9800 5600 10600 5600
+Connection ~ 9800 5600
+Wire Wire Line
+	10600 5600 10800 5600
+Connection ~ 10600 5600
+Text GLabel 10800 3650 2    50   Input ~ 0
+r_row0
+Text GLabel 10800 4300 2    50   Input ~ 0
+r_row1
+Text GLabel 10800 4950 2    50   Input ~ 0
+r_row2
+Text GLabel 10800 5600 2    50   Input ~ 0
+r_row3
+Text GLabel 6000 3000 1    50   Input ~ 0
+r_col5
+Text GLabel 6800 3000 1    50   Input ~ 0
+r_col4
+Text GLabel 7600 3000 1    50   Input ~ 0
+r_col3
+Text GLabel 8400 3000 1    50   Input ~ 0
+r_col2
+Text GLabel 9200 3000 1    50   Input ~ 0
+r_col1
+Text GLabel 10000 3000 1    50   Input ~ 0
+r_col0
+Text GLabel 8800 1200 0    50   Input ~ 0
+r_data
+Text GLabel 10200 1700 2    50   Input ~ 0
+r_row0
+Text GLabel 8800 1800 0    50   Input ~ 0
+r_row1
+Text GLabel 8800 1900 0    50   Input ~ 0
+r_row2
+Text GLabel 8800 2000 0    50   Input ~ 0
+r_row3
+Text GLabel 10200 1400 2    50   Input ~ 0
+r_reset
+Text GLabel 8800 1700 0    50   Input ~ 0
+r_col0
+Text GLabel 10200 2000 2    50   Input ~ 0
+r_col1
+Text GLabel 10200 2300 2    50   Input ~ 0
+r_col2
+Text GLabel 8800 2300 0    50   Input ~ 0
+r_col3
+Text GLabel 8800 2200 0    50   Input ~ 0
+r_col4
+Text GLabel 8800 2100 0    50   Input ~ 0
+r_col5
+Wire Wire Line
+	8800 1500 8300 1500
+Wire Wire Line
+	8300 1500 8300 1550
+Wire Wire Line
+	8800 1400 8300 1400
+Wire Wire Line
+	8300 1400 8300 1500
+Connection ~ 8300 1500
+Wire Wire Line
+	8800 1300 8300 1300
+Wire Wire Line
+	8300 1300 8300 1400
+Connection ~ 8300 1400
+Wire Wire Line
+	10200 1500 10600 1500
+Wire Wire Line
+	10600 1500 10600 1100
+Wire Wire Line
+	10200 1300 10750 1300
+Wire Wire Line
+	10750 1300 10750 1500
+$Comp
+L power:GND #PWR06
+U 1 1 608647EC
+P 8300 1550
+F 0 "#PWR06" H 8300 1300 50  0001 C CNN
+F 1 "GND" H 8305 1377 50  0000 C CNN
+F 2 "" H 8300 1550 50  0001 C CNN
+F 3 "" H 8300 1550 50  0001 C CNN
+	1    8300 1550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR04
+U 1 1 60864DDA
+P 10750 1500
+F 0 "#PWR04" H 10750 1250 50  0001 C CNN
+F 1 "GND" H 10755 1327 50  0000 C CNN
+F 2 "" H 10750 1500 50  0001 C CNN
+F 3 "" H 10750 1500 50  0001 C CNN
+	1    10750 1500
+	1    0    0    -1  
+$EndComp
+Text GLabel 10600 1100 1    50   Input ~ 0
+r_VCC
+NoConn ~ 10200 1200
+$Comp
+L power:GND #PWR02
+U 1 1 60877240
+P 6700 1300
+F 0 "#PWR02" H 6700 1050 50  0001 C CNN
+F 1 "GND" H 6705 1127 50  0000 C CNN
+F 2 "" H 6700 1300 50  0001 C CNN
+F 3 "" H 6700 1300 50  0001 C CNN
+	1    6700 1300
+	1    0    0    -1  
+$EndComp
+Text GLabel 7300 1300 2    50   Input ~ 0
+r_reset
+$Comp
+L power:GND #PWR09
+U 1 1 60879312
+P 7150 2400
+F 0 "#PWR09" H 7150 2150 50  0001 C CNN
+F 1 "GND" H 7155 2227 50  0000 C CNN
+F 2 "" H 7150 2400 50  0001 C CNN
+F 3 "" H 7150 2400 50  0001 C CNN
+	1    7150 2400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7050 2325 7150 2325
+Wire Wire Line
+	7150 2325 7150 2400
+Wire Wire Line
+	7050 2175 7150 2175
+Wire Wire Line
+	7150 2175 7150 2325
+Connection ~ 7150 2325
+Wire Wire Line
+	7050 2275 7225 2275
+Wire Wire Line
+	7225 2275 7225 2100
+Wire Wire Line
+	7050 2225 7275 2225
+Text GLabel 7275 2225 2    50   Input ~ 0
+r_data
+Text GLabel 7225 2100 1    50   Input ~ 0
+r_VCC
+$Comp
+L power:GND #PWR08
+U 1 1 60898815
+P 4350 2375
+F 0 "#PWR08" H 4350 2125 50  0001 C CNN
+F 1 "GND" H 4355 2202 50  0000 C CNN
+F 2 "" H 4350 2375 50  0001 C CNN
+F 3 "" H 4350 2375 50  0001 C CNN
+	1    4350 2375
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4450 2325 4350 2325
+Wire Wire Line
+	4350 2325 4350 2375
+Wire Wire Line
+	4450 2175 4350 2175
+Wire Wire Line
+	4350 2175 4350 2325
+Connection ~ 4350 2325
+Wire Wire Line
+	4450 2275 4300 2275
+Wire Wire Line
+	4300 2275 4300 2100
+Wire Wire Line
+	4450 2225 4250 2225
+Text GLabel 4250 2225 0    50   Input ~ 0
+l_data
+Text GLabel 4300 2100 1    50   Input ~ 0
+l_VCC
+$Comp
+L power:GND #PWR01
+U 1 1 608A60DD
+P 4800 1300
+F 0 "#PWR01" H 4800 1050 50  0001 C CNN
+F 1 "GND" H 4805 1127 50  0000 C CNN
+F 2 "" H 4800 1300 50  0001 C CNN
+F 3 "" H 4800 1300 50  0001 C CNN
+	1    4800 1300
+	1    0    0    -1  
+$EndComp
+Text GLabel 4200 1300 0    50   Input ~ 0
+l_reset
+Text GLabel 1300 1200 0    50   Input ~ 0
+l_data
+Text GLabel 2700 1700 2    50   Input ~ 0
+l_row0
+Text GLabel 1300 1800 0    50   Input ~ 0
+l_row1
+Text GLabel 1300 1900 0    50   Input ~ 0
+l_row2
+Text GLabel 1300 2000 0    50   Input ~ 0
+l_row3
+Text GLabel 2700 1400 2    50   Input ~ 0
+l_reset
+Text GLabel 1300 1700 0    50   Input ~ 0
+l_col0
+Text GLabel 2700 2000 2    50   Input ~ 0
+l_col1
+Text GLabel 2700 2300 2    50   Input ~ 0
+l_col2
+Text GLabel 1300 2300 0    50   Input ~ 0
+l_col3
+Text GLabel 1300 2200 0    50   Input ~ 0
+l_col4
+Text GLabel 1300 2100 0    50   Input ~ 0
+l_col5
+$Comp
+L power:GND #PWR05
+U 1 1 608CE5F3
+P 850 1550
+F 0 "#PWR05" H 850 1300 50  0001 C CNN
+F 1 "GND" H 855 1377 50  0000 C CNN
+F 2 "" H 850 1550 50  0001 C CNN
+F 3 "" H 850 1550 50  0001 C CNN
+	1    850  1550
+	1    0    0    -1  
+$EndComp
+Text GLabel 850  1100 1    50   Input ~ 0
+l_VCC
+Wire Wire Line
+	2700 1500 3100 1500
+Wire Wire Line
+	3100 1500 3100 1100
+$Comp
+L power:GND #PWR03
+U 1 1 608EDBF0
+P 3250 1500
+F 0 "#PWR03" H 3250 1250 50  0001 C CNN
+F 1 "GND" H 3255 1327 50  0000 C CNN
+F 2 "" H 3250 1500 50  0001 C CNN
+F 3 "" H 3250 1500 50  0001 C CNN
+	1    3250 1500
+	1    0    0    -1  
+$EndComp
+Text GLabel 3100 1100 1    50   Input ~ 0
+l_VCC
+Wire Wire Line
+	1300 1500 850  1500
+Wire Wire Line
+	850  1500 850  1550
+Wire Wire Line
+	1300 1400 850  1400
+Wire Wire Line
+	850  1400 850  1500
+Connection ~ 850  1500
+Wire Wire Line
+	1300 1300 850  1300
+Wire Wire Line
+	850  1300 850  1100
+Wire Wire Line
+	2700 1300 3250 1300
+Wire Wire Line
+	3250 1300 3250 1500
+NoConn ~ 2700 1200
+$Comp
+L power:PWR_FLAG #FLG01
+U 1 1 6096E5F8
+P 5300 1700
+F 0 "#FLG01" H 5300 1775 50  0001 C CNN
+F 1 "PWR_FLAG" H 5300 1873 50  0000 C CNN
+F 2 "" H 5300 1700 50  0001 C CNN
+F 3 "~" H 5300 1700 50  0001 C CNN
+	1    5300 1700
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:PWR_FLAG #FLG03
+U 1 1 6096F036
+P 6200 1700
+F 0 "#FLG03" H 6200 1775 50  0001 C CNN
+F 1 "PWR_FLAG" H 6200 1873 50  0000 C CNN
+F 2 "" H 6200 1700 50  0001 C CNN
+F 3 "~" H 6200 1700 50  0001 C CNN
+	1    6200 1700
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:PWR_FLAG #FLG02
+U 1 1 6096FEE3
+P 5750 1700
+F 0 "#FLG02" H 5750 1775 50  0001 C CNN
+F 1 "PWR_FLAG" H 5750 1873 50  0000 C CNN
+F 2 "" H 5750 1700 50  0001 C CNN
+F 3 "~" H 5750 1700 50  0001 C CNN
+	1    5750 1700
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR07
+U 1 1 609898B5
+P 5750 1700
+F 0 "#PWR07" H 5750 1450 50  0001 C CNN
+F 1 "GND" H 5755 1527 50  0000 C CNN
+F 2 "" H 5750 1700 50  0001 C CNN
+F 3 "" H 5750 1700 50  0001 C CNN
+	1    5750 1700
+	1    0    0    -1  
+$EndComp
+Text GLabel 5300 1700 1    50   Input ~ 0
+l_VCC
+Text GLabel 6200 1700 1    50   Input ~ 0
+r_VCC
+Text GLabel 8800 1600 0    50   Input ~ 0
+r_row4
+Text GLabel 1300 1600 0    50   Input ~ 0
+l_row4
+$Comp
+L kbd:SW_PUSH SW41
+U 1 1 60A4A3C5
+P 2900 5300
+F 0 "SW41" H 2900 5555 50  0000 C CNN
+F 1 "SW_PUSH" H 2900 5464 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 2900 5300 50  0001 C CNN
+F 3 "" H 2900 5300 50  0000 C CNN
+	1    2900 5300
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW42
+U 1 1 60A4B882
+P 3700 5300
+F 0 "SW42" H 3700 5555 50  0000 C CNN
+F 1 "SW_PUSH" H 3700 5464 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 3700 5300 50  0001 C CNN
+F 3 "" H 3700 5300 50  0000 C CNN
+	1    3700 5300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:D D39
+U 1 1 60A4D2A0
+P 3200 5450
+F 0 "D39" V 3246 5370 50  0000 R CNN
+F 1 "D" V 3155 5370 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 3200 5450 50  0001 C CNN
+F 3 "~" H 3200 5450 50  0001 C CNN
+	1    3200 5450
+	0    -1   -1   0   
+$EndComp
+Connection ~ 3200 5600
+Wire Wire Line
+	3200 5600 4000 5600
+$Comp
+L Device:D D40
+U 1 1 60A4E1F8
+P 4000 5450
+F 0 "D40" V 4046 5370 50  0000 R CNN
+F 1 "D" V 3955 5370 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 4000 5450 50  0001 C CNN
+F 3 "~" H 4000 5450 50  0001 C CNN
+	1    4000 5450
+	0    -1   -1   0   
+$EndComp
+Connection ~ 4000 5600
+Wire Wire Line
+	4000 5600 4800 5600
+Wire Wire Line
+	2600 5300 2600 4650
+Connection ~ 2600 4650
+Wire Wire Line
+	3400 5300 3400 4650
+Connection ~ 3400 4650
+$Comp
+L kbd:SW_PUSH SW47
+U 1 1 60A5B10D
+P 7900 5300
+F 0 "SW47" H 7900 5555 50  0000 C CNN
+F 1 "SW_PUSH" H 7900 5464 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 7900 5300 50  0001 C CNN
+F 3 "" H 7900 5300 50  0000 C CNN
+	1    7900 5300
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW48
+U 1 1 60A5BA08
+P 8700 5300
+F 0 "SW48" H 8700 5555 50  0000 C CNN
+F 1 "SW_PUSH" H 8700 5464 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 8700 5300 50  0001 C CNN
+F 3 "" H 8700 5300 50  0000 C CNN
+	1    8700 5300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:D D45
+U 1 1 60A5C18A
+P 8200 5450
+F 0 "D45" V 8246 5370 50  0000 R CNN
+F 1 "D" V 8155 5370 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 8200 5450 50  0001 C CNN
+F 3 "~" H 8200 5450 50  0001 C CNN
+	1    8200 5450
+	0    -1   -1   0   
+$EndComp
+Connection ~ 8200 5600
+Wire Wire Line
+	8200 5600 9000 5600
+$Comp
+L Device:D D46
+U 1 1 60A5F37A
+P 9000 5450
+F 0 "D46" V 9046 5370 50  0000 R CNN
+F 1 "D" V 8955 5370 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 9000 5450 50  0001 C CNN
+F 3 "~" H 9000 5450 50  0001 C CNN
+	1    9000 5450
+	0    -1   -1   0   
+$EndComp
+Connection ~ 9000 5600
+Wire Wire Line
+	9000 5600 9800 5600
+Wire Wire Line
+	8400 5300 8400 4650
+Connection ~ 8400 4650
+Wire Wire Line
+	7600 5300 7600 4650
+Connection ~ 7600 4650
+$Comp
+L kbd:SW_PUSH SW51
+U 1 1 60A6FB0D
+P 1300 5950
+F 0 "SW51" H 1300 6205 50  0000 C CNN
+F 1 "SW_PUSH" H 1300 6114 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 1300 5950 50  0001 C CNN
+F 3 "" H 1300 5950 50  0000 C CNN
+	1    1300 5950
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW52
+U 1 1 60A7041E
+P 3700 5950
+F 0 "SW52" H 3700 6205 50  0000 C CNN
+F 1 "SW_PUSH" H 3700 6114 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 3700 5950 50  0001 C CNN
+F 3 "" H 3700 5950 50  0000 C CNN
+	1    3700 5950
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW53
+U 1 1 60A722FE
+P 4500 5950
+F 0 "SW53" H 4500 6205 50  0000 C CNN
+F 1 "SW_PUSH" H 4500 6114 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 4500 5950 50  0001 C CNN
+F 3 "" H 4500 5950 50  0000 C CNN
+	1    4500 5950
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW54
+U 1 1 60A72B94
+P 5300 5950
+F 0 "SW54" H 5300 6205 50  0000 C CNN
+F 1 "SW_PUSH" H 5300 6114 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 5300 5950 50  0001 C CNN
+F 3 "" H 5300 5950 50  0000 C CNN
+	1    5300 5950
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:D D49
+U 1 1 60A733A7
+P 1600 6100
+F 0 "D49" V 1646 6020 50  0000 R CNN
+F 1 "D" V 1555 6020 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 1600 6100 50  0001 C CNN
+F 3 "~" H 1600 6100 50  0001 C CNN
+	1    1600 6100
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D50
+U 1 1 60A73E4D
+P 4000 6100
+F 0 "D50" V 4046 6020 50  0000 R CNN
+F 1 "D" V 3955 6020 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 4000 6100 50  0001 C CNN
+F 3 "~" H 4000 6100 50  0001 C CNN
+	1    4000 6100
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D51
+U 1 1 60A7471E
+P 4800 6100
+F 0 "D51" V 4846 6020 50  0000 R CNN
+F 1 "D" V 4755 6020 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 4800 6100 50  0001 C CNN
+F 3 "~" H 4800 6100 50  0001 C CNN
+	1    4800 6100
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D52
+U 1 1 60A750EF
+P 5600 6100
+F 0 "D52" V 5646 6020 50  0000 R CNN
+F 1 "D" V 5555 6020 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 5600 6100 50  0001 C CNN
+F 3 "~" H 5600 6100 50  0001 C CNN
+	1    5600 6100
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5000 5950 5000 5300
+Connection ~ 5000 5300
+Wire Wire Line
+	4200 5950 4200 5300
+Connection ~ 4200 5300
+Wire Wire Line
+	1000 5950 1000 5300
+Connection ~ 1000 5300
+Wire Wire Line
+	5600 6250 4800 6250
+Wire Wire Line
+	4800 6250 4000 6250
+Connection ~ 4800 6250
+Wire Wire Line
+	1600 6250 900  6250
+Connection ~ 1600 6250
+Text GLabel 900  6250 0    50   Input ~ 0
+l_row4
+$Comp
+L kbd:SW_PUSH SW55
+U 1 1 60AA8BDF
+P 6300 5950
+F 0 "SW55" H 6300 6205 50  0000 C CNN
+F 1 "SW_PUSH" H 6300 6114 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 6300 5950 50  0001 C CNN
+F 3 "" H 6300 5950 50  0000 C CNN
+	1    6300 5950
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW56
+U 1 1 60AA94F5
+P 7100 5950
+F 0 "SW56" H 7100 6205 50  0000 C CNN
+F 1 "SW_PUSH" H 7100 6114 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 7100 5950 50  0001 C CNN
+F 3 "" H 7100 5950 50  0000 C CNN
+	1    7100 5950
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW57
+U 1 1 60AAAEA5
+P 9500 5950
+F 0 "SW57" H 9500 6205 50  0000 C CNN
+F 1 "SW_PUSH" H 9500 6114 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 9500 5950 50  0001 C CNN
+F 3 "" H 9500 5950 50  0000 C CNN
+	1    9500 5950
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW58
+U 1 1 60AAB7D9
+P 10300 5950
+F 0 "SW58" H 10300 6205 50  0000 C CNN
+F 1 "SW_PUSH" H 10300 6114 50  0000 C CNN
+F 2 "not_enough_compositions:choc_v1" H 10300 5950 50  0001 C CNN
+F 3 "" H 10300 5950 50  0000 C CNN
+	1    10300 5950
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:D D53
+U 1 1 60AAC46F
+P 6600 6100
+F 0 "D53" V 6646 6020 50  0000 R CNN
+F 1 "D" V 6555 6020 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 6600 6100 50  0001 C CNN
+F 3 "~" H 6600 6100 50  0001 C CNN
+	1    6600 6100
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D54
+U 1 1 60AAD0D8
+P 7400 6100
+F 0 "D54" V 7446 6020 50  0000 R CNN
+F 1 "D" V 7355 6020 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 7400 6100 50  0001 C CNN
+F 3 "~" H 7400 6100 50  0001 C CNN
+	1    7400 6100
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D55
+U 1 1 60AAD970
+P 9800 6100
+F 0 "D55" V 9846 6020 50  0000 R CNN
+F 1 "D" V 9755 6020 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 9800 6100 50  0001 C CNN
+F 3 "~" H 9800 6100 50  0001 C CNN
+	1    9800 6100
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D56
+U 1 1 60AAE35D
+P 10600 6100
+F 0 "D56" V 10646 6020 50  0000 R CNN
+F 1 "D" V 10555 6020 50  0000 R CNN
+F 2 "kbd:D3_SMD_v2" H 10600 6100 50  0001 C CNN
+F 3 "~" H 10600 6100 50  0001 C CNN
+	1    10600 6100
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	6000 5950 6000 5300
+Connection ~ 6000 5300
+Wire Wire Line
+	6800 5950 6800 5300
+Connection ~ 6800 5300
+Wire Wire Line
+	9200 5950 9200 5300
+Connection ~ 9200 5300
+Wire Wire Line
+	10000 5950 10000 5300
+Connection ~ 10000 5300
+Wire Wire Line
+	6600 6250 7400 6250
+Wire Wire Line
+	7400 6250 9800 6250
+Connection ~ 7400 6250
+Wire Wire Line
+	9800 6250 10600 6250
+Connection ~ 9800 6250
+Wire Wire Line
+	10600 6250 10800 6250
+Connection ~ 10600 6250
+Text GLabel 10800 6250 2    50   Input ~ 0
+r_row4
+NoConn ~ 2700 1900
+NoConn ~ 2700 2100
+NoConn ~ 2700 2200
+NoConn ~ 2700 1800
+NoConn ~ 2700 1600
+Connection ~ 4000 6250
+Wire Wire Line
+	1600 6250 4000 6250
+Wire Wire Line
+	3400 5300 3400 5950
+Connection ~ 3400 5300
+NoConn ~ 10200 1600
+NoConn ~ 10200 1800
+NoConn ~ 10200 1900
+NoConn ~ 10200 2100
+NoConn ~ 10200 2200
+$EndSCHEMATC
