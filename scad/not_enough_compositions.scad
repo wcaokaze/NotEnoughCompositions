@@ -9,7 +9,7 @@ base_size = [114.3, 61];
 thumb_position = [57.15, 0];
 thumb_size = [76.2, 16];
 
-tilt_a = atan2(2, 64.2);
+tilt_a = atan2(3, 64.2);
 
 choc_v1_leg_height = 3;
 circuit_thickness = 0.6;
@@ -74,6 +74,12 @@ module rubber_base() {
         translate([-5.5, 0]) cylinder((2.9 - circuit_thickness) * 2, d = 2.2, center = true);
     }
 
+    module pro_micro_hole() {
+        translate([base_position.x, base_position.y + base_size.y - 19]) {
+            cube([34, 19, 10]);
+        }
+    }
+
     n = [base_position.y, circuit_z + tan(tilt_a) * base_position.y];
     y1 = n.x * cos(tilt_a) + n.y * sin(tilt_a);
     y2 = (base_position.y + base_size.y) * cos(tilt_a);
@@ -88,6 +94,8 @@ module rubber_base() {
                 }
             }
         }
+
+        pro_micro_hole();
 
         for (x = [0 : 5]) {
             for (y = [0 : 3]) {
