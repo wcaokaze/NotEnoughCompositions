@@ -4,8 +4,8 @@ $fs = 0.1;
 key_pitch_h = 19.05;
 key_pitch_v = 16;
 
-base_position = [0, 28];
-base_size = [114.3, 61];
+alphanumeric_position = [0, 28];
+alphanumeric_size = [114.3, 61];
 thumb_position = [57.15, 0];
 thumb_size = [76.2, 16];
 
@@ -36,8 +36,8 @@ module circuit_board() {
         union() {
             difference() {
                 whole_size = [
-                    max(base_position.x + base_size.x, thumb_position.x + thumb_size.x),
-                    max(base_position.y + base_size.y, thumb_position.y + thumb_size.y)
+                    max(alphanumeric_position.x + alphanumeric_size.x, thumb_position.x + thumb_size.x),
+                    max(alphanumeric_position.y + alphanumeric_size.y, thumb_position.y + thumb_size.y)
                 ];
 
                 cube([whole_size.x, whole_size.y, circuit_thickness]);
@@ -47,7 +47,7 @@ module circuit_board() {
                 }
             }
 
-            translate(base_position) cube([base_size.x, base_size.y, circuit_thickness]);
+            translate(alphanumeric_position) cube([alphanumeric_size.x, alphanumeric_size.y, circuit_thickness]);
             translate(thumb_position) cube([thumb_size.x, thumb_size.y, circuit_thickness]);
         }
 
@@ -67,7 +67,7 @@ module circuit_board() {
     }
 }
 
-module rubber_base() {
+module rubber_alphanumeric() {
     module rubber_hole_choc_v1() {
         module pad_hole() {
             minkowski() {
@@ -85,7 +85,7 @@ module rubber_base() {
     }
 
     module pro_micro_hole() {
-        translate([base_position.x, base_position.y + base_size.y - 19]) {
+        translate([alphanumeric_position.x, alphanumeric_position.y + alphanumeric_size.y - 19]) {
             cube([34, 19, 10]);
         }
     }
@@ -98,9 +98,9 @@ module rubber_base() {
         }
     }
 
-    n = [base_position.y, circuit_z + tan(tilt_a) * base_position.y];
+    n = [alphanumeric_position.y, circuit_z + tan(tilt_a) * alphanumeric_position.y];
     y1 = n.x * cos(tilt_a) + n.y * sin(tilt_a);
-    y2 = (base_position.y + base_size.y) * cos(tilt_a);
+    y2 = (alphanumeric_position.y + alphanumeric_size.y) * cos(tilt_a);
 
     diode_positions = [
         [ 3.56, 36.5], [ 3.56, 52.5], [ 1.18, 64.0], [  1.18, 80.0],
@@ -113,11 +113,11 @@ module rubber_base() {
 
     difference() {
         hull() {
-            translate([base_position.x, y1]) cube([base_size.x, y2 - y1, 0.01]);
+            translate([alphanumeric_position.x, y1]) cube([alphanumeric_size.x, y2 - y1, 0.01]);
 
             rotate([tilt_a, 0]) {
-                translate([base_position.x, base_position.y, circuit_z]) {
-                    cube([base_size.x, base_size.y, 0.01]);
+                translate([alphanumeric_position.x, alphanumeric_position.y, circuit_z]) {
+                    cube([alphanumeric_size.x, alphanumeric_size.y, 0.01]);
                 }
             }
         }
@@ -212,5 +212,5 @@ color("#ff000044") {
     }
 }
 
-rubber_base();
+rubber_alphanumeric();
 rubber_thumb();
