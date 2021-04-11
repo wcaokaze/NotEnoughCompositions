@@ -4,23 +4,34 @@ $fs = 0.1;
 key_pitch_h = 19.05;
 key_pitch_v = 16;
 
-alphanumeric_position = [0, 28];
-alphanumeric_size = [114.3, 61];
-thumb_position = [57.15, 0];
-thumb_size = [76.2, 16];
+alphanumeric_position = [0, key_pitch_v * 1.5];
+alphanumeric_size = [key_pitch_h * 6, key_pitch_v * 4];
+thumb_position = [key_pitch_h * 3, 0];
+thumb_size = [key_pitch_h * 4, key_pitch_v];
 
 tilt_a = atan2(3, 64.2);
 
+choc_v1_body_height = 5;
 choc_v1_leg_height = 3;
+choc_v1_travel = 3;
+
 circuit_thickness = 0.6;
 circuit_z = choc_v1_leg_height - circuit_thickness + 0.2;
 
+rubber_padding = 4;
+
+keycap_margin = 0.5;
+
+case_wall_thickness = 1;
+case_bottom_thickness = 3;
+
 module key_choc_v1() {
-    translate([-15 / 2, -15 / 2]) cube([15, 15, 5]);
-    translate([0, 0, -3]) cylinder(3, d = 3.2);
+    translate([-15 / 2, -15 / 2]) cube([15, 15, choc_v1_body_height]);
+    translate([0, 0, -choc_v1_leg_height]) cylinder(choc_v1_leg_height, d = 3.2);
 }
 
 module circuit_board() {
+    circuit_board_size = [133.35, 89];
     bridge_width = 1.2;
 
     module choc_v1_foot_print() {
@@ -35,19 +46,19 @@ module circuit_board() {
     difference() {
         union() {
             difference() {
-                whole_size = [
-                    max(alphanumeric_position.x + alphanumeric_size.x, thumb_position.x + thumb_size.x),
-                    max(alphanumeric_position.y + alphanumeric_size.y, thumb_position.y + thumb_size.y)
-                ];
-
-                cube([whole_size.x, whole_size.y, circuit_thickness]);
+                cube([circuit_board_size.x, circuit_board_size.y, circuit_thickness]);
 
                 translate([bridge_width, bridge_width, -circuit_thickness]) {
-                    cube([whole_size.x - bridge_width * 2, whole_size.y - bridge_width * 2, circuit_thickness * 3]);
+                    cube([circuit_board_size.x - bridge_width * 2,
+                          circuit_board_size.y - bridge_width * 2,
+                          circuit_thickness * 3]);
                 }
             }
 
-            translate(alphanumeric_position) cube([alphanumeric_size.x, alphanumeric_size.y, circuit_thickness]);
+            translate([alphanumeric_position.x, alphanumeric_position.y + rubber_padding]) {
+                cube([alphanumeric_size.x, alphanumeric_size.y - rubber_padding, circuit_thickness]);
+            }
+
             translate(thumb_position) cube([thumb_size.x, thumb_size.y, circuit_thickness]);
         }
 
@@ -98,7 +109,7 @@ module rubber_alphanumeric() {
         }
     }
 
-    n = [alphanumeric_position.y, circuit_z + tan(tilt_a) * alphanumeric_position.y];
+    n = [alphanumeric_position.y + rubber_padding, circuit_z + tan(tilt_a) * alphanumeric_position.y];
     y1 = n.x * cos(tilt_a) + n.y * sin(tilt_a);
     y2 = (alphanumeric_position.y + alphanumeric_size.y) * cos(tilt_a);
 
@@ -116,8 +127,11 @@ module rubber_alphanumeric() {
             translate([alphanumeric_position.x, y1]) cube([alphanumeric_size.x, y2 - y1, 0.01]);
 
             rotate([tilt_a, 0]) {
-                translate([alphanumeric_position.x, alphanumeric_position.y, circuit_z]) {
-                    cube([alphanumeric_size.x, alphanumeric_size.y, 0.01]);
+                translate([alphanumeric_position.x,
+                           alphanumeric_position.y + rubber_padding,
+                           circuit_z])
+                {
+                    cube([alphanumeric_size.x, alphanumeric_size.y - rubber_padding, 0.01]);
                 }
             }
         }
@@ -163,7 +177,7 @@ module rubber_thumb() {
         }
     }
 
-    n = [thumb_position.y + 4, circuit_z + tan(tilt_a) * thumb_position.y];
+    n = [thumb_position.y + rubber_padding, circuit_z + tan(tilt_a) * thumb_position.y];
     y1 = n.x * cos(tilt_a) + n.y * sin(tilt_a);
     y2 = (thumb_position.y + thumb_size.y) * cos(tilt_a);
 
@@ -174,8 +188,11 @@ module rubber_thumb() {
             translate([thumb_position.x, y1]) cube([thumb_size.x, y2 - y1, 0.01]);
 
             rotate([tilt_a, 0]) {
-                translate([thumb_position.x, thumb_position.y + 4, circuit_z]) {
-                    cube([thumb_size.x, thumb_size.y - 4, 0.01]);
+                translate([thumb_position.x,
+                           thumb_position.y + rubber_padding,
+                           circuit_z])
+                {
+                    cube([thumb_size.x, thumb_size.y - rubber_padding, 0.01]);
                 }
             }
         }
@@ -190,7 +207,91 @@ module rubber_thumb() {
     }
 }
 
-color("#00ff0044") rotate([tilt_a, 0, 0]) translate([0, 0, circuit_z]) circuit_board($fa = 8);
+module case_alphanumeric() {
+    case_size = [alphanumeric_size.x + case_wall_thickness * 2 + keycap_margin,
+                 alphanumeric_size.y + case_wall_thickness * 2 + keycap_margin,
+                 choc_v1_body_height + choc_v1_travel - 1.5];
+
+    choc_v1_hole_size = [15.4, alphanumeric_size.y, 20];
+
+    rotate([tilt_a, 0]) {
+        difference() {
+            translate([alphanumeric_position.x - case_wall_thickness - keycap_margin / 2,
+                       alphanumeric_position.y - case_wall_thickness - keycap_margin / 2,
+                       circuit_z + circuit_thickness + 1.5])
+            {
+                cube(case_size);
+            }
+
+            translate([alphanumeric_position.x - keycap_margin / 2,
+                       alphanumeric_position.y - keycap_margin / 2,
+                       circuit_z + circuit_thickness + 1.5 + choc_v1_body_height - 1])
+            {
+                cube([alphanumeric_size.x + keycap_margin,
+                      alphanumeric_size.y + keycap_margin,
+                      20]);
+            }
+
+            for (x = [0 : 5]) {
+                translate([alphanumeric_position.x + key_pitch_h * (x + 0.5) - choc_v1_hole_size.x / 2,
+                           alphanumeric_position.y])
+                {
+                    cube(choc_v1_hole_size);
+                }
+            }
+        }
+    }
+}
+
+module case_thumb() {
+    case_size = [thumb_size.x + case_wall_thickness * 2 + keycap_margin,
+                 thumb_size.y + case_wall_thickness * 2 + keycap_margin,
+                 choc_v1_body_height + choc_v1_travel - 1.5];
+
+    choc_v1_hole_size = [15.4, thumb_size.y, 20];
+
+    rotate([tilt_a, 0]) {
+        difference() {
+            translate([thumb_position.x - case_wall_thickness - keycap_margin / 2,
+                       thumb_position.y - case_wall_thickness - keycap_margin / 2,
+                       circuit_z + circuit_thickness + 1.5])
+            {
+                cube(case_size);
+            }
+
+            translate([thumb_position.x - keycap_margin / 2,
+                       thumb_position.y - keycap_margin / 2 - case_wall_thickness,
+                       circuit_z + circuit_thickness + 1.5 + choc_v1_body_height - 1])
+            {
+                cube([thumb_size.x + keycap_margin,
+                      thumb_size.y + keycap_margin + case_wall_thickness,
+                      20]);
+            }
+
+            for (x = [0 : 3]) {
+                translate([thumb_position.x + key_pitch_h * (x + 0.5) - choc_v1_hole_size.x / 2,
+                           thumb_position.y])
+                {
+                    cube(choc_v1_hole_size);
+                }
+            }
+        }
+    }
+}
+
+module keycap() {
+    translate([0, 0, 0.5]) {
+        cube([
+                key_pitch_h - keycap_margin,
+                key_pitch_v - keycap_margin,
+                1
+            ],
+            center = true
+        );
+    }
+}
+
+rotate([tilt_a, 0, 0]) translate([0, 0, circuit_z]) circuit_board($fa = 8);
 
 color("#ff000044") {
     rotate([tilt_a, 0]) {
@@ -214,3 +315,28 @@ color("#ff000044") {
 
 rubber_alphanumeric();
 rubber_thumb();
+
+case_alphanumeric();
+case_thumb();
+
+rotate([tilt_a, 0]) {
+    for (x = [0 : 5]) {
+        for (y = [0 : 3]) {
+            translate([key_pitch_h * (x + 0.5),
+                       key_pitch_v * (y + 2),
+                       circuit_z + circuit_thickness + choc_v1_body_height + choc_v1_travel])
+            {
+                keycap();
+            }
+        }
+    }
+
+    for (x = [0 : 3]) {
+        translate([key_pitch_h * (x + 3.5),
+                   key_pitch_v * 0.5,
+                   circuit_z + circuit_thickness + choc_v1_body_height + choc_v1_travel])
+        {
+            keycap();
+        }
+    }
+}
