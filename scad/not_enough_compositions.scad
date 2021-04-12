@@ -11,6 +11,14 @@ thumb_size = [key_pitch_h * 4, key_pitch_v];
 
 tilt_a = atan2(3, 64.2);
 
+alphanumeric_mounting_hole_positions = [
+    [19.05, 40], [38.1, 80], [95.25, 40], [95.25, 72]
+];
+
+thumb_mounting_hole_positions = [
+    [76.2, 8], [114.3, 8]
+];
+
 choc_v1_body_height = 5;
 choc_v1_leg_height = 3;
 choc_v1_travel = 3;
@@ -74,6 +82,10 @@ module circuit_board() {
             translate([key_pitch_h * (x + 3.5), key_pitch_v * 0.5]) {
                 choc_v1_foot_print();
             }
+        }
+
+        for (p = [each alphanumeric_mounting_hole_positions, each thumb_mounting_hole_positions]) {
+            translate(p) cylinder(20, d = 2.2);
         }
     }
 }
@@ -149,6 +161,10 @@ module rubber_alphanumeric() {
         }
 
         diode_hole(diode_positions);
+
+        for (p = alphanumeric_mounting_hole_positions) {
+            translate(p) cylinder(20, d = 2.2);
+        }
     }
 }
 
@@ -204,6 +220,10 @@ module rubber_thumb() {
         }
 
         diode_hole(diode_positions);
+
+        for (p = thumb_mounting_hole_positions) {
+            translate(p) cylinder(20, d = 2.2);
+        }
     }
 }
 
@@ -214,18 +234,21 @@ module case_alphanumeric() {
 
     choc_v1_hole_size = [15.4, alphanumeric_size.y, 20];
 
+    bottom_z = circuit_z + circuit_thickness + 1.5;
+    bottom_thickness = choc_v1_body_height - 1;
+
     rotate([tilt_a, 0]) {
         difference() {
             translate([alphanumeric_position.x - case_wall_thickness - keycap_margin / 2,
                        alphanumeric_position.y - case_wall_thickness - keycap_margin / 2,
-                       circuit_z + circuit_thickness + 1.5])
+                       bottom_z])
             {
                 cube(case_size);
             }
 
             translate([alphanumeric_position.x - keycap_margin / 2,
                        alphanumeric_position.y - keycap_margin / 2,
-                       circuit_z + circuit_thickness + 1.5 + choc_v1_body_height - 1])
+                       bottom_z + bottom_thickness])
             {
                 cube([alphanumeric_size.x + keycap_margin,
                       alphanumeric_size.y + keycap_margin,
@@ -239,6 +262,13 @@ module case_alphanumeric() {
                     cube(choc_v1_hole_size);
                 }
             }
+
+            for (p = alphanumeric_mounting_hole_positions) {
+                translate(p) {
+                    translate([0, 0, bottom_z + bottom_thickness - 1.1]) cylinder(1.1, d1 = 2.2, d2 = 3.8);
+                    cylinder(20, d = 2.2);
+                }
+            }
         }
     }
 }
@@ -250,18 +280,21 @@ module case_thumb() {
 
     choc_v1_hole_size = [15.4, thumb_size.y, 20];
 
+    bottom_z = circuit_z + circuit_thickness + 1.5;
+    bottom_thickness = choc_v1_body_height - 1;
+
     rotate([tilt_a, 0]) {
         difference() {
             translate([thumb_position.x - case_wall_thickness - keycap_margin / 2,
                        thumb_position.y - case_wall_thickness - keycap_margin / 2,
-                       circuit_z + circuit_thickness + 1.5])
+                       bottom_z])
             {
                 cube(case_size);
             }
 
             translate([thumb_position.x - keycap_margin / 2,
                        thumb_position.y - keycap_margin / 2 - case_wall_thickness,
-                       circuit_z + circuit_thickness + 1.5 + choc_v1_body_height - 1])
+                       bottom_z + bottom_thickness])
             {
                 cube([thumb_size.x + keycap_margin,
                       thumb_size.y + keycap_margin + case_wall_thickness,
@@ -273,6 +306,13 @@ module case_thumb() {
                            thumb_position.y])
                 {
                     cube(choc_v1_hole_size);
+                }
+            }
+
+            for (p = thumb_mounting_hole_positions) {
+                translate(p) {
+                    translate([0, 0, bottom_z + bottom_thickness - 1.1]) cylinder(1.1, d1 = 2.2, d2 = 3.8);
+                    cylinder(20, d = 2.2);
                 }
             }
         }
@@ -293,6 +333,7 @@ module keycap() {
 
 rotate([tilt_a, 0, 0]) translate([0, 0, circuit_z]) circuit_board($fa = 8);
 
+/*
 color("#ff000044") {
     rotate([tilt_a, 0]) {
         translate([0, 0, choc_v1_leg_height]) {
@@ -312,6 +353,7 @@ color("#ff000044") {
         }
     }
 }
+*/
 
 rubber_alphanumeric();
 rubber_thumb();
@@ -319,6 +361,7 @@ rubber_thumb();
 case_alphanumeric();
 case_thumb();
 
+/*
 rotate([tilt_a, 0]) {
     for (x = [0 : 5]) {
         for (y = [0 : 3]) {
@@ -340,3 +383,4 @@ rotate([tilt_a, 0]) {
         }
     }
 }
+*/
