@@ -24,6 +24,7 @@ choc_v1_leg_height = 3;
 choc_v1_travel = 3;
 
 circuit_board_size = [133.35, 89];
+circuit_bridge_width = 1.2;
 circuit_thickness = 0.6;
 circuit_z = choc_v1_leg_height - circuit_thickness + 0.2;
 
@@ -65,8 +66,6 @@ module key_choc_v1() {
 }
 
 module circuit_board() {
-    bridge_width = 1.2;
-
     module choc_v1_foot_print() {
         cylinder(circuit_thickness * 3, d = 3.3, center = true);
         translate([ 5.5, 0]) cylinder(circuit_thickness * 3, d = 2.2, center = true);
@@ -81,9 +80,9 @@ module circuit_board() {
             difference() {
                 cube([circuit_board_size.x, circuit_board_size.y, circuit_thickness]);
 
-                translate([bridge_width, bridge_width, -circuit_thickness]) {
-                    cube([circuit_board_size.x - bridge_width * 2,
-                          circuit_board_size.y - bridge_width * 2,
+                translate([circuit_bridge_width, circuit_bridge_width, -circuit_thickness]) {
+                    cube([circuit_board_size.x - circuit_bridge_width * 2,
+                          circuit_board_size.y - circuit_bridge_width * 2,
                           circuit_thickness * 3]);
                 }
             }
@@ -190,7 +189,7 @@ module rubber_alphanumeric() {
         diode_hole(diode_positions);
 
         for (p = alphanumeric_mounting_hole_positions) {
-            translate(p) cylinder(20, d = 2.2);
+            rotate([tilt_a, 0]) translate(p) cylinder(20, d = 2.2);
         }
     }
 }
@@ -251,7 +250,7 @@ module rubber_thumb() {
         diode_hole(diode_positions);
 
         for (p = thumb_mounting_hole_positions) {
-            translate(p) cylinder(20, d = 2.2);
+            rotate([tilt_a, 0]) translate(p) cylinder(20, d = 2.2);
         }
     }
 }
@@ -335,6 +334,30 @@ module case_thumb() {
 }
 
 module case_margin_bottom() {
+    module circuit_board_hole() {
+        a = 10;
+
+        rotate([tilt_a, 0]) translate([0, 0, circuit_z]) union() {
+            difference() {
+                translate([-a, -a]) {
+                    cube([circuit_board_size.x + a * 2, circuit_board_size.y + a * 2, 10]);
+                }
+
+                translate([circuit_bridge_width, circuit_bridge_width, -5]) {
+                    cube([circuit_board_size.x - circuit_bridge_width * 2,
+                          circuit_board_size.y - circuit_bridge_width * 2,
+                          20]);
+                }
+            }
+
+            translate([alphanumeric_position.x, alphanumeric_position.y + rubber_padding]) {
+                cube([alphanumeric_size.x, alphanumeric_size.y - rubber_padding, 10]);
+            }
+
+            translate(thumb_position) cube([thumb_size.x, thumb_size.y, 10]);
+        }
+    }
+
     module alphanumeric_rubber_hole() {
         ry = alphanumeric_position.y + rubber_padding;
         rz = circuit_z + tan(tilt_a) * ry;
@@ -351,7 +374,7 @@ module case_margin_bottom() {
                 {
                     cube([alphanumeric_position.x + alphanumeric_size.x,
                           100,
-                          0.01]);
+                          10]);
                 }
             }
         }
@@ -366,7 +389,7 @@ module case_margin_bottom() {
 
                 rotate([tilt_a, 0]) {
                     translate([thumb_position.x, 0, circuit_z]) {
-                        cube([thumb_size.x, thumb_size.y, 0.01]);
+                        cube([100, thumb_size.y, 10]);
                     }
                 }
             }
@@ -384,11 +407,12 @@ module case_margin_bottom() {
 
             rotate([tilt_a, 0]) {
                 translate([0, 0, circuit_z]) {
-                    cube([circuit_board_size.x, circuit_board_size.y, 0.01]);
+                    cube([circuit_board_size.x, circuit_board_size.y, circuit_thickness]);
                 }
             }
         }
 
+        circuit_board_hole();
         alphanumeric_rubber_hole();
         thumb_rubber_hole();
     }
@@ -407,6 +431,10 @@ module case_margin_top() {
 
             translate(case_alphanumeric_position) cube([case_alphanumeric_size.x, case_alphanumeric_size.y, 20]);
             translate(case_thumb_position) cube([case_thumb_size.x, case_thumb_size.y, 20]);
+
+            for (p = [each alphanumeric_mounting_hole_positions, each thumb_mounting_hole_positions]) {
+                translate(p) cylinder(20, d = 2.2);
+            }
         }
     }
 }
@@ -446,15 +474,15 @@ color("#ff000044") {
     }
 }
 */
-
+/*
 rubber_alphanumeric();
 rubber_thumb();
 
 case_alphanumeric();
 case_thumb();
-
-color("#ffffff77") case_margin_bottom();
-color("#ffffff77") case_margin_top();
+*/
+color("#ffffff33") case_margin_bottom();
+color("#ffffff33") case_margin_top();
 
 /*
 rotate([tilt_a, 0]) {
