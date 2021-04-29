@@ -11,7 +11,8 @@ thumb_size = [key_pitch_h * 4, key_pitch_v];
 
 tilt_a = atan2(3, 64.2);
 
-choc_v1_body_height = 5;
+choc_v1_body_bottom_size = [15, 15, 3];
+choc_v1_body_top_size = [13.8, 13.8, 2];
 choc_v1_leg_height = 3;
 choc_v1_travel = 3;
 
@@ -22,40 +23,44 @@ circuit_z = choc_v1_leg_height - circuit_thickness + 0.2;
 
 rubber_padding = 4;
 
-keycap_margin = 0.5;
+keycap_margin = 0.4;
+keycap_thickness = 1;
 
-case_wall_thickness = 1;
-case_bottom_thickness = 3;
+keycap_horizontal_wall_d = max(choc_v1_body_top_size.x / 2 + 0.4 + keycap_thickness - (key_pitch_h - keycap_margin) / 2, 0);
+keycap_vertical_wall_d   = max(choc_v1_body_top_size.y / 2 + 0.4 + keycap_thickness - (key_pitch_v - keycap_margin) / 2, 0);
+
 case_margin_top_thickness = 1.5;
 case_margin_bottom_thickness = 1;
+case_wall_thickness = 1;
+case_bottom_thickness = choc_v1_body_bottom_size.z - case_margin_top_thickness;
 
 case_alphanumeric_size = [
-    alphanumeric_size.x + case_wall_thickness * 2 + keycap_margin,
-    alphanumeric_size.y + case_wall_thickness * 2 + keycap_margin,
-    choc_v1_body_height + choc_v1_travel - case_margin_top_thickness
+    alphanumeric_size.x + keycap_margin + case_wall_thickness * 2 + keycap_horizontal_wall_d,
+    alphanumeric_size.y + keycap_margin + case_wall_thickness * 2 + keycap_vertical_wall_d,
+    choc_v1_body_bottom_size.z + choc_v1_body_top_size.z - case_margin_top_thickness + keycap_thickness - 0.2
 ];
 
 case_alphanumeric_position = [
-    alphanumeric_position.x - case_wall_thickness - keycap_margin / 2,
-    alphanumeric_position.y - case_wall_thickness - keycap_margin / 2,
+    alphanumeric_position.x - keycap_margin / 2 - case_wall_thickness - keycap_horizontal_wall_d,
+    alphanumeric_position.y - keycap_margin / 2 - case_wall_thickness - keycap_vertical_wall_d,
     circuit_z + circuit_thickness + case_margin_top_thickness
 ];
 
 case_thumb_size = [
-    thumb_size.x + case_wall_thickness * 2 + keycap_margin,
-    thumb_size.y + case_wall_thickness * 2 + keycap_margin,
-    choc_v1_body_height + choc_v1_travel - case_margin_top_thickness
+    thumb_size.x + keycap_margin + case_wall_thickness * 2 + keycap_horizontal_wall_d,
+    thumb_size.y + keycap_margin + case_wall_thickness * 2 + keycap_vertical_wall_d,
+    choc_v1_body_bottom_size.z + choc_v1_body_top_size.z - case_margin_top_thickness + keycap_thickness - 0.2
 ];
 
 case_thumb_position = [
-    thumb_position.x - case_wall_thickness - keycap_margin / 2,
-    thumb_position.y - case_wall_thickness - keycap_margin / 2,
+    thumb_position.x - keycap_margin / 2 - case_wall_thickness - keycap_horizontal_wall_d,
+    thumb_position.y - keycap_margin / 2 - case_wall_thickness - keycap_vertical_wall_d,
     circuit_z + circuit_thickness + case_margin_top_thickness
 ];
 
 screw_d = 2.2;
 screw_head_d = 3.8;
-screw_length = 8;
+screw_length = 6.84;
 screw_z = case_alphanumeric_position.z + case_bottom_thickness - screw_length;
 screw_nut_thickness = 1.2;
 
@@ -68,8 +73,20 @@ thumb_screw_positions = [
 ];
 
 module key_choc_v1() {
-    translate([-15 / 2, -15 / 2]) cube([15, 15, choc_v1_body_height]);
-    translate([0, 0, -choc_v1_leg_height]) cylinder(choc_v1_leg_height, d = 3.2);
+    union() {
+        translate([-choc_v1_body_bottom_size.x / 2,
+                   -choc_v1_body_bottom_size.y / 2])
+        {
+            cube(choc_v1_body_bottom_size);
+        }
+        translate([-choc_v1_body_top_size.x / 2,
+                   -choc_v1_body_top_size.y / 2,
+                    choc_v1_body_bottom_size.z])
+        {
+            cube(choc_v1_body_top_size);
+        }
+        translate([0, 0, -choc_v1_leg_height]) cylinder(choc_v1_leg_height, d = 3.2);
+    }
 }
 
 module screw() {
@@ -275,7 +292,7 @@ module rubber_thumb() {
     module diode_hole(positions) {
         rotate([tilt_a, 0]) {
             for (p = positions) {
-                translate([p.x, p.y, circuit_z]) cube([2.7, 7, 1.8 * 2], center = true);
+                translate([p.x, p.y, circuit_z]) cube([3.2, 7, 1.8 * 2], center = true);
             }
         }
     }
@@ -371,11 +388,11 @@ module case_thumb() {
             translate(case_thumb_position) cube(case_thumb_size);
 
             translate([case_thumb_position.x + case_wall_thickness,
-                       case_thumb_position.y,
+                       case_thumb_position.y + case_wall_thickness,
                        case_thumb_position.z + case_bottom_thickness])
             {
                 cube([case_thumb_size.x - case_wall_thickness * 2,
-                      case_thumb_size.y - case_wall_thickness,
+                      case_thumb_size.y - case_wall_thickness * 2,
                       20]);
             }
 
@@ -465,31 +482,37 @@ module case_margin_bottom() {
     module alphanumeric_screw_bridge() {
         bridge_width = 3.8;
 
-        rotate([tilt_a, 0]) union() {
+        difference() {
+            rotate([tilt_a, 0]) union() {
+                for (p = alphanumeric_screw_positions) {
+                    eastmost = alphanumeric_position.x + alphanumeric_size.x;
+    
+                    if (p.x > eastmost - 30) {
+                        translate([p.x - bridge_width / 2,
+                                   p.y - bridge_width / 2,
+                                   screw_z + screw_nut_thickness])
+                        {
+                            cube([eastmost - p.x + bridge_width / 2,
+                                  bridge_width,
+                                  case_margin_bottom_thickness]);
+                        }
+                    }
+    
+                    if (p.y < alphanumeric_position.y + 30) {
+                        translate([p.x - bridge_width / 2,
+                                   alphanumeric_position.y,
+                                   screw_z + screw_nut_thickness])
+                        {
+                            cube([bridge_width,
+                                  p.y - alphanumeric_position.y + bridge_width / 2,
+                                  case_margin_bottom_thickness]);
+                        }
+                    }
+                }
+            }
+
             for (p = alphanumeric_screw_positions) {
-                eastmost = alphanumeric_position.x + alphanumeric_size.x;
-
-                if (p.x > eastmost - 30) {
-                    translate([p.x - bridge_width / 2,
-                               p.y - bridge_width / 2,
-                               screw_z + screw_nut_thickness])
-                    {
-                        cube([eastmost - p.x + bridge_width / 2,
-                              bridge_width,
-                              case_margin_bottom_thickness]);
-                    }
-                }
-
-                if (p.y < alphanumeric_position.y + 30) {
-                    translate([p.x - bridge_width / 2,
-                               alphanumeric_position.y,
-                               screw_z + screw_nut_thickness])
-                    {
-                        cube([bridge_width,
-                              p.y - alphanumeric_position.y + bridge_width / 2,
-                              case_margin_bottom_thickness]);
-                    }
-                }
+                rotate([tilt_a, 0]) translate(p) cylinder(20, d = screw_d, center = true);
             }
         }
     }
@@ -497,14 +520,24 @@ module case_margin_bottom() {
     module thumb_screw_bridge() {
         bridge_width = 3.8;
 
-        rotate([tilt_a, 0]) union() {
-            for (p = thumb_screw_positions) {
-                translate([p.x - bridge_width / 2,
-                           thumb_position.y,
-                           screw_z + screw_nut_thickness])
-                {
-                    cube([bridge_width, thumb_size.y + 2, case_margin_bottom_thickness]);
+        difference() {
+            intersection() {
+                rotate([tilt_a, 0]) union() {
+                    for (p = thumb_screw_positions) {
+                        translate([p.x - bridge_width / 2,
+                                   thumb_position.y,
+                                   screw_z + screw_nut_thickness])
+                        {
+                            cube([bridge_width, thumb_size.y + 2, case_margin_bottom_thickness]);
+                        }
+                    }
                 }
+    
+                translate([0, 0, 0.75]) cube([circuit_board_size.x, size_y, 20]);
+            }
+
+            for (p = thumb_screw_positions) {
+                rotate([tilt_a, 0]) translate(p) cylinder(20, d = screw_d, center = true);
             }
         }
     }
@@ -529,10 +562,6 @@ module case_margin_bottom() {
             circuit_board_hole();
             alphanumeric_rubber_hole();
             thumb_rubber_hole();
-
-            for (p = thumb_screw_positions) {
-                rotate([tilt_a, 0]) translate(p) cylinder(20, d = screw_d, center = true);
-            }
         }
 
         alphanumeric_screw_bridge();
@@ -547,7 +576,7 @@ module case_margin_top() {
                 cube([
                     circuit_board_size.x,
                     circuit_board_size.y,
-                    choc_v1_body_height + choc_v1_travel - case_wall_thickness
+                    choc_v1_body_bottom_size.z + choc_v1_body_top_size.z - case_wall_thickness
                 ]);
             }
 
@@ -561,21 +590,34 @@ module case_margin_top() {
     }
 }
 
-module keycap() {
-    translate([0, 0, 0.5]) {
-        cube([
-                key_pitch_h - keycap_margin,
-                key_pitch_v - keycap_margin,
-                1
-            ],
-            center = true
-        );
+module keycap(north_wall = false,
+              east_wall  = false,
+              south_wall = false,
+              west_wall  = false)
+{
+    outer_north = -(key_pitch_v - keycap_margin) / 2 + (north_wall ? keycap_vertical_wall_d   : 0);
+    outer_east  =  (key_pitch_h - keycap_margin) / 2 + (east_wall  ? keycap_horizontal_wall_d : 0);
+    outer_south =  (key_pitch_v - keycap_margin) / 2 + (south_wall ? keycap_vertical_wall_d   : 0);
+    outer_west  = -(key_pitch_h - keycap_margin) / 2 + (west_wall  ? keycap_horizontal_wall_d : 0);
+
+    inner_north = outer_north + (north_wall ? keycap_thickness : 0);
+    inner_east  = outer_east  - (east_wall  ? keycap_thickness : 0);
+    inner_south = outer_south - (south_wall ? keycap_thickness : 0);
+    inner_west  = outer_west  + (west_wall  ? keycap_thickness : 0);
+
+    difference() {
+        translate([outer_west, outer_north]) {
+            cube([outer_east - outer_west, outer_south - outer_north, choc_v1_travel - 0.5]);
+        }
+
+        translate([inner_west, inner_north, keycap_thickness]) {
+            cube([inner_east - inner_west, inner_south - inner_north, choc_v1_travel]);
+        }
     }
 }
 
 rotate([tilt_a, 0, 0]) translate([0, 0, circuit_z]) circuit_board($fa = 8);
 
-/*
 color("#ff000044") {
     rotate([tilt_a, 0]) {
         translate([0, 0, choc_v1_leg_height]) {
@@ -595,7 +637,6 @@ color("#ff000044") {
         }
     }
 }
-*/
 
 rubber_alphanumeric();
 rubber_thumb();
@@ -610,16 +651,21 @@ for (p = [each alphanumeric_screw_positions, each thumb_screw_positions]) {
     color("#333333") rotate([tilt_a, 0]) translate(p) screw();
 }
 
-
-/*
 rotate([tilt_a, 0]) {
     for (x = [0 : 5]) {
         for (y = [0 : 3]) {
+            z = (x == 0 && y == 0)
+                ? circuit_z + circuit_thickness + choc_v1_body_bottom_size.z + choc_v1_body_top_size.z
+                : circuit_z + circuit_thickness + choc_v1_body_bottom_size.z + choc_v1_body_top_size.z + choc_v1_travel;
+
             translate([key_pitch_h * (x + 0.5),
                        key_pitch_v * (y + 2),
-                       circuit_z + circuit_thickness + choc_v1_body_height + choc_v1_travel])
+                       z])
             {
-                keycap();
+               rotate([180, 0]) {
+                   keycap(north_wall = false,  east_wall = x == 5,
+                          south_wall = y == 0, west_wall = x == 0);
+               }
             }
         }
     }
@@ -627,10 +673,12 @@ rotate([tilt_a, 0]) {
     for (x = [0 : 3]) {
         translate([key_pitch_h * (x + 3.5),
                    key_pitch_v * 0.5,
-                   circuit_z + circuit_thickness + choc_v1_body_height + choc_v1_travel])
+                   circuit_z + circuit_thickness + choc_v1_body_bottom_size.z + choc_v1_body_top_size.z + choc_v1_travel])
         {
-            keycap();
+            rotate([180, 0]) {
+                keycap(north_wall = false, east_wall = x == 3,
+                       south_wall = true,  west_wall = x == 0);
+            }
         }
     }
 }
-*/
