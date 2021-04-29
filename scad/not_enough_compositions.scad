@@ -373,30 +373,28 @@ module rubber_thumb() {
 module case_alphanumeric() {
     choc_v1_hole_size = [15.4, alphanumeric_size.y, 20];
 
-    rotate([tilt_a, 0]) {
-        difference() {
-            translate(case_alphanumeric_position) cube(case_alphanumeric_size);
+    difference() {
+        translate(case_alphanumeric_position) cube(case_alphanumeric_size);
 
-            translate([case_alphanumeric_position.x + case_wall_thickness,
-                       case_alphanumeric_position.y + case_wall_thickness,
-                       case_alphanumeric_position.z + case_bottom_thickness])
+        translate([case_alphanumeric_position.x + case_wall_thickness,
+                   case_alphanumeric_position.y + case_wall_thickness,
+                   case_alphanumeric_position.z + case_bottom_thickness])
+        {
+            cube([case_alphanumeric_size.x - case_wall_thickness * 2,
+                  case_alphanumeric_size.y - case_wall_thickness * 2,
+                  20]);
+        }
+
+        for (x = [0 : 5]) {
+            translate([alphanumeric_position.x + key_pitch_h * (x + 0.5) - choc_v1_hole_size.x / 2,
+                       alphanumeric_position.y])
             {
-                cube([case_alphanumeric_size.x - case_wall_thickness * 2,
-                      case_alphanumeric_size.y - case_wall_thickness * 2,
-                      20]);
+                cube(choc_v1_hole_size);
             }
+        }
 
-            for (x = [0 : 5]) {
-                translate([alphanumeric_position.x + key_pitch_h * (x + 0.5) - choc_v1_hole_size.x / 2,
-                           alphanumeric_position.y])
-                {
-                    cube(choc_v1_hole_size);
-                }
-            }
-
-            for (p = alphanumeric_screw_positions) {
-                translate(p) alphanumeric_screw();
-            }
+        for (p = alphanumeric_screw_positions) {
+            translate(p) alphanumeric_screw();
         }
     }
 }
@@ -404,30 +402,28 @@ module case_alphanumeric() {
 module case_thumb() {
     choc_v1_hole_size = [15.4, thumb_size.y, 20];
 
-    rotate([tilt_a, 0]) {
-        difference() {
-            translate(case_thumb_position) cube(case_thumb_size);
+    difference() {
+        translate(case_thumb_position) cube(case_thumb_size);
 
-            translate([case_thumb_position.x + case_wall_thickness,
-                       case_thumb_position.y + case_wall_thickness,
-                       case_thumb_position.z + case_bottom_thickness])
+        translate([case_thumb_position.x + case_wall_thickness,
+                   case_thumb_position.y + case_wall_thickness,
+                   case_thumb_position.z + case_bottom_thickness])
+        {
+            cube([case_thumb_size.x - case_wall_thickness * 2,
+                  case_thumb_size.y - case_wall_thickness * 2,
+                  20]);
+        }
+
+        for (x = [0 : 3]) {
+            translate([thumb_position.x + key_pitch_h * (x + 0.5) - choc_v1_hole_size.x / 2,
+                       thumb_position.y])
             {
-                cube([case_thumb_size.x - case_wall_thickness * 2,
-                      case_thumb_size.y - case_wall_thickness * 2,
-                      20]);
+                cube(choc_v1_hole_size);
             }
+        }
 
-            for (x = [0 : 3]) {
-                translate([thumb_position.x + key_pitch_h * (x + 0.5) - choc_v1_hole_size.x / 2,
-                           thumb_position.y])
-                {
-                    cube(choc_v1_hole_size);
-                }
-            }
-
-            for (p = thumb_screw_positions) {
-                translate(p) thumb_screw();
-            }
+        for (p = thumb_screw_positions) {
+            translate(p) thumb_screw();
         }
     }
 }
@@ -595,22 +591,20 @@ module case_margin_bottom() {
 }
 
 module case_margin_top() {
-    rotate([tilt_a, 0]) {
-        difference() {
-            translate([0, 0, circuit_z + circuit_thickness]) {
-                cube([
-                    circuit_board_size.x,
-                    circuit_board_size.y,
-                    choc_v1_body_bottom_size.z + choc_v1_body_top_size.z - case_wall_thickness
-                ]);
-            }
+    difference() {
+        translate([0, 0, circuit_z + circuit_thickness]) {
+            cube([
+                circuit_board_size.x,
+                circuit_board_size.y,
+                choc_v1_body_bottom_size.z + choc_v1_body_top_size.z - case_wall_thickness
+            ]);
+        }
 
-            translate(case_alphanumeric_position) cube([case_alphanumeric_size.x, case_alphanumeric_size.y, 20]);
-            translate(case_thumb_position) cube([case_thumb_size.x, case_thumb_size.y, 20]);
+        translate(case_alphanumeric_position) cube([case_alphanumeric_size.x, case_alphanumeric_size.y, 20]);
+        translate(case_thumb_position) cube([case_thumb_size.x, case_thumb_size.y, 20]);
 
-            for (p = [each alphanumeric_screw_positions, each thumb_screw_positions]) {
-                translate(p) cylinder(20, d = 2.2);
-            }
+        for (p = [each alphanumeric_screw_positions, each thumb_screw_positions]) {
+            translate(p) cylinder(20, d = 2.2);
         }
     }
 }
@@ -666,11 +660,11 @@ color("#ff000044") {
 rubber_alphanumeric();
 rubber_thumb();
  
-case_alphanumeric();
-case_thumb();
+rotate([tilt_a, 0]) case_alphanumeric();
+rotate([tilt_a, 0]) case_thumb();
 
 color("#ffffff33") case_margin_bottom();
-color("#ffffff33") case_margin_top();
+color("#ffffff33") rotate([tilt_a, 0]) case_margin_top();
 
 for (p = alphanumeric_screw_positions) {
     color("#333333") rotate([tilt_a, 0]) translate(p) alphanumeric_screw();
