@@ -288,7 +288,7 @@ module rubber_alphanumeric() {
         screw_bridge();
 
         for (p = alphanumeric_screw_positions) {
-            translate(p) alphanumeric_screw();
+            rotate([tilt_a, 0]) translate(p) alphanumeric_screw();
         }
     }
 }
