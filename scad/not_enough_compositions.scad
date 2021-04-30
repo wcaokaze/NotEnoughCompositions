@@ -182,9 +182,9 @@ module rubber_alphanumeric() {
             }
         }
 
-        cylinder((3.2 - circuit_thickness) * 2, d = 3.3, center = true);
-        translate([ 5.5, 0]) cylinder((2.9 - circuit_thickness) * 2, d = 2.2, center = true);
-        translate([-5.5, 0]) cylinder((2.9 - circuit_thickness) * 2, d = 2.2, center = true);
+        cylinder((3.2 - circuit_thickness) * 2, d = 3.5, center = true);
+        translate([ 5.5, 0]) cylinder((2.9 - circuit_thickness) * 2, d = 1.9, center = true);
+        translate([-5.5, 0]) cylinder((2.9 - circuit_thickness) * 2, d = 1.9, center = true);
 
         translate([0, 5.9]) pad_hole();
         translate([5, 3.8]) pad_hole();
@@ -302,9 +302,9 @@ module rubber_thumb() {
             }
         }
 
-        cylinder(10, d = 3.3, center = true);
-        translate([ 5.5, 0]) cylinder(10, d = 2.2, center = true);
-        translate([-5.5, 0]) cylinder(10, d = 2.2, center = true);
+        cylinder(10, d = 3.5, center = true);
+        translate([ 5.5, 0]) cylinder(10, d = 1.9, center = true);
+        translate([-5.5, 0]) cylinder(10, d = 1.9, center = true);
 
         translate([0, 5.9]) pad_hole();
         translate([5, 3.8]) pad_hole();
