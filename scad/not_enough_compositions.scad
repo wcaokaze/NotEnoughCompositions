@@ -31,7 +31,6 @@ keycap_vertical_wall_d   = max(choc_v1_body_top_size.y / 2 + 0.4 + keycap_thickn
 
 case_margin_top_thickness = 1.5;
 case_margin_alphanumeric_screw_bridge_thickness = 1.4;
-case_margin_thumb_screw_bridge_thickness = 1;
 case_wall_thickness = 1;
 case_bottom_thickness = choc_v1_body_bottom_size.z - case_margin_top_thickness;
 
@@ -183,8 +182,8 @@ module rubber_alphanumeric() {
         }
 
         cylinder((3.2 - circuit_thickness) * 2, d = 3.5, center = true);
-        translate([ 5.5, 0]) cylinder((2.9 - circuit_thickness) * 2, d = 1.9, center = true);
-        translate([-5.5, 0]) cylinder((2.9 - circuit_thickness) * 2, d = 1.9, center = true);
+        translate([ 5.5, 0]) cylinder((3 - circuit_thickness) * 2, d = 1.9, center = true);
+        translate([-5.5, 0]) cylinder((3 - circuit_thickness) * 2, d = 1.9, center = true);
 
         translate([0, 5.9]) pad_hole();
         translate([5, 3.8]) pad_hole();
@@ -205,39 +204,44 @@ module rubber_alphanumeric() {
     }
 
     module screw_bridge() {
-        bridge_width = 4;
+        horizontal_bridge_width = 12;
+        vertical_bridge_width = 8;
+        hole_margin_radius = 6;
 
         rotate([tilt_a, 0]) union() {
             for (p = alphanumeric_screw_positions) {
                 eastmost = alphanumeric_position.x + alphanumeric_size.x;
 
-                if (p.x > eastmost - 30) {
-                    translate([p.x - bridge_width / 2,
-                               p.y - bridge_width / 2,
-                               alphanumeric_screw_z + screw_nut_thickness + case_margin_alphanumeric_screw_bridge_thickness - 20])
+                horizontal_bridge = p.x > eastmost - 30;
+                vertical_bridge = p.y < alphanumeric_position.y + 30;
+                z = alphanumeric_screw_z + screw_nut_thickness
+                    + (horizontal_bridge || vertical_bridge
+                        ? case_margin_alphanumeric_screw_bridge_thickness : 0);
+
+                if (horizontal_bridge) {
+                    translate([p.x,
+                               p.y - horizontal_bridge_width / 2,
+                               z - 20])
                     {
-                        cube([eastmost - p.x + bridge_width / 2,
-                              bridge_width,
+                        cube([eastmost - p.x + vertical_bridge_width / 2,
+                              horizontal_bridge_width,
                               20]);
                     }
                 }
 
-                if (p.y < alphanumeric_position.y + 30) {
-                    translate([p.x - bridge_width / 2,
+                if (vertical_bridge) {
+                    translate([p.x - vertical_bridge_width / 2,
                                alphanumeric_position.y,
-                               alphanumeric_screw_z + screw_nut_thickness + case_margin_alphanumeric_screw_bridge_thickness - 20])
+                               z - 20])
                     {
-                        cube([bridge_width,
-                              p.y - alphanumeric_position.y + bridge_width / 2,
+                        cube([vertical_bridge_width,
+                              p.y - alphanumeric_position.y,
                               20]);
                     }
                 }
 
-                translate([p.x - bridge_width / 2,
-                           p.y - bridge_width / 2,
-                           alphanumeric_screw_z + screw_nut_thickness - 20])
-                {
-                    cube([bridge_width, bridge_width, 20]);
+                translate([p.x, p.y, z - 20]) {
+                    cylinder(20, r = hole_margin_radius);
                 }
             }
         }
@@ -318,21 +322,6 @@ module rubber_thumb() {
         }
     }
 
-    module screw_bridge() {
-        bridge_width = 4;
-
-        rotate([tilt_a, 0]) union() {
-            for (p = thumb_screw_positions) {
-                translate([p.x - bridge_width / 2,
-                           0,
-                           thumb_screw_z + screw_nut_thickness + case_margin_thumb_screw_bridge_thickness - 20])
-                {
-                    cube([bridge_width, 20, 20]);
-                }
-            }
-        }
-    }
-
     ry = thumb_position.y + rubber_padding;
     rz = circuit_z + tan(tilt_a) * ry;
 
@@ -362,10 +351,14 @@ module rubber_thumb() {
         }
 
         diode_hole(diode_positions);
-        screw_bridge();
 
         for (p = thumb_screw_positions) {
-            rotate([tilt_a, 0]) translate(p) thumb_screw();
+            rotate([tilt_a, 0]) translate(p) {
+                thumb_screw();
+                translate([0, 0, screw_nut_thickness - 20]) {
+                    cylinder(20, r = 4);
+                }
+            }
         }
     }
 }
@@ -497,7 +490,9 @@ module case_margin_bottom() {
     }
 
     module alphanumeric_screw_bridge() {
-        bridge_width = 3.8;
+        horizontal_bridge_width = 8;
+        vertical_bridge_width = 5;
+        hole_margin_radius = 4;
 
         difference() {
             intersection() {
@@ -505,25 +500,36 @@ module case_margin_bottom() {
                     for (p = alphanumeric_screw_positions) {
                         eastmost = alphanumeric_position.x + alphanumeric_size.x;
 
-                        if (p.x > eastmost - 30) {
-                            translate([p.x - bridge_width / 2,
-                                       p.y - bridge_width / 2,
-                                       alphanumeric_screw_z + screw_nut_thickness])
+                        horizontal_bridge = p.x > eastmost - 30;
+                        vertical_bridge = p.y < alphanumeric_position.y + 30;
+                        z = alphanumeric_screw_z + screw_nut_thickness;
+
+                        if (horizontal_bridge) {
+                            translate([p.x,
+                                       p.y - horizontal_bridge_width / 2,
+                                       z])
                             {
-                                cube([eastmost - p.x + bridge_width / 2,
-                                      bridge_width,
+                                cube([eastmost - p.x + vertical_bridge_width / 2,
+                                      horizontal_bridge_width,
                                       case_margin_alphanumeric_screw_bridge_thickness]);
                             }
                         }
 
-                        if (p.y < alphanumeric_position.y + 30) {
-                            translate([p.x - bridge_width / 2,
+                        if (vertical_bridge) {
+                            translate([p.x - vertical_bridge_width / 2,
                                        alphanumeric_position.y,
-                                       alphanumeric_screw_z + screw_nut_thickness])
+                                       z])
                             {
-                                cube([bridge_width,
-                                      p.y - alphanumeric_position.y + bridge_width / 2,
+                                cube([vertical_bridge_width,
+                                      p.y - alphanumeric_position.y,
                                       case_margin_alphanumeric_screw_bridge_thickness]);
+                            }
+                        }
+
+                        if (horizontal_bridge || vertical_bridge) {
+                            translate([p.x, p.y, z]) {
+                                cylinder(case_margin_alphanumeric_screw_bridge_thickness,
+                                    r = hole_margin_radius);
                             }
                         }
                     }
@@ -533,31 +539,6 @@ module case_margin_bottom() {
             }
 
             for (p = alphanumeric_screw_positions) {
-                rotate([tilt_a, 0]) translate(p) cylinder(20, d = screw_d, center = true);
-            }
-        }
-    }
-
-    module thumb_screw_bridge() {
-        bridge_width = 3.8;
-
-        difference() {
-            intersection() {
-                 rotate([tilt_a, 0]) union() {
-                    for (p = thumb_screw_positions) {
-                        translate([p.x - bridge_width / 2,
-                                   thumb_position.y,
-                                   thumb_screw_z + screw_nut_thickness])
-                        {
-                            cube([bridge_width, thumb_size.y + 2, case_margin_thumb_screw_bridge_thickness]);
-                        }
-                    }
-                }
-
-                translate([0, 0, 0.75]) cube([circuit_board_size.x, size_y, 20]);
-            }
-
-            for (p = thumb_screw_positions) {
                 rotate([tilt_a, 0]) translate(p) cylinder(20, d = screw_d, center = true);
             }
         }
@@ -586,7 +567,6 @@ module case_margin_bottom() {
         }
 
         alphanumeric_screw_bridge();
-        thumb_screw_bridge();
     }
 }
 
@@ -626,7 +606,7 @@ module keycap(north_wall = false,
 
     difference() {
         translate([outer_west, outer_north]) {
-            cube([outer_east - outer_west, outer_south - outer_north, choc_v1_travel - 0.5]);
+            cube([outer_east - outer_west, outer_south - outer_north, choc_v1_travel]);
         }
 
         translate([inner_west, inner_north, keycap_thickness]) {
@@ -678,8 +658,8 @@ rotate([tilt_a, 0]) {
     for (x = [0 : 5]) {
         for (y = [0 : 3]) {
             z = (x == 0 && y == 0)
-                ? circuit_z + circuit_thickness + choc_v1_body_bottom_size.z + choc_v1_body_top_size.z
-                : circuit_z + circuit_thickness + choc_v1_body_bottom_size.z + choc_v1_body_top_size.z + choc_v1_travel;
+                ? circuit_z + circuit_thickness + choc_v1_body_bottom_size.z + choc_v1_body_top_size.z + keycap_thickness
+                : circuit_z + circuit_thickness + choc_v1_body_bottom_size.z + choc_v1_body_top_size.z + keycap_thickness + choc_v1_travel;
 
             translate([key_pitch_h * (x + 0.5),
                        key_pitch_v * (y + 2),
