@@ -30,7 +30,7 @@ keycap_horizontal_wall_d = max(choc_v1_body_top_size.x / 2 + 0.4 + keycap_thickn
 keycap_vertical_wall_d   = max(choc_v1_body_top_size.y / 2 + 0.4 + keycap_thickness - (key_pitch_v - keycap_margin) / 2, 0);
 
 case_margin_top_thickness = 1.5;
-case_margin_alphanumeric_screw_bridge_thickness = 1.4;
+screw_bridge_thickness = 1.4;
 case_wall_thickness = 1;
 case_bottom_thickness = choc_v1_body_bottom_size.z - case_margin_top_thickness;
 
@@ -215,8 +215,7 @@ module rubber_alphanumeric() {
                 horizontal_bridge = p.x > eastmost - 30;
                 vertical_bridge = p.y < alphanumeric_position.y + 30;
                 z = alphanumeric_screw_z + screw_nut_thickness
-                    + (horizontal_bridge || vertical_bridge
-                        ? case_margin_alphanumeric_screw_bridge_thickness : 0);
+                    + (horizontal_bridge || vertical_bridge ? screw_bridge_thickness : 0);
 
                 if (horizontal_bridge) {
                     translate([p.x,
@@ -489,7 +488,7 @@ module case_margin_bottom() {
         }
     }
 
-    module alphanumeric_screw_bridge() {
+    module screw_bridge() {
         horizontal_bridge_width = 8;
         vertical_bridge_width = 5;
         hole_margin_radius = 4;
@@ -511,7 +510,7 @@ module case_margin_bottom() {
                             {
                                 cube([eastmost - p.x + vertical_bridge_width / 2,
                                       horizontal_bridge_width,
-                                      case_margin_alphanumeric_screw_bridge_thickness]);
+                                      screw_bridge_thickness]);
                             }
                         }
 
@@ -522,13 +521,13 @@ module case_margin_bottom() {
                             {
                                 cube([vertical_bridge_width,
                                       p.y - alphanumeric_position.y,
-                                      case_margin_alphanumeric_screw_bridge_thickness]);
+                                      screw_bridge_thickness]);
                             }
                         }
 
                         if (horizontal_bridge || vertical_bridge) {
                             translate([p.x, p.y, z]) {
-                                cylinder(case_margin_alphanumeric_screw_bridge_thickness,
+                                cylinder(screw_bridge_thickness,
                                     r = hole_margin_radius);
                             }
                         }
@@ -566,7 +565,7 @@ module case_margin_bottom() {
             thumb_rubber_hole();
         }
 
-        alphanumeric_screw_bridge();
+        screw_bridge();
     }
 }
 
