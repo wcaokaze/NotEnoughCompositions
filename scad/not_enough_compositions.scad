@@ -19,7 +19,7 @@ choc_v1_travel = 3;
 circuit_board_size = [133.35, 89];
 circuit_bridge_width = 1.2;
 circuit_thickness = 0.6;
-circuit_z = choc_v1_leg_height - circuit_thickness + 0.2;
+circuit_z = choc_v1_leg_height - circuit_thickness;
 
 rubber_padding = 4;
 
@@ -61,7 +61,7 @@ case_thumb_position = [
 screw_d = 2.2;
 screw_head_d = 3.8;
 alphanumeric_screw_length = 8;
-thumb_screw_length = 6.84;
+thumb_screw_length = 6;
 alphanumeric_screw_z = case_alphanumeric_position.z + case_bottom_thickness - alphanumeric_screw_length;
 thumb_screw_z = case_thumb_position.z + case_bottom_thickness - thumb_screw_length;
 screw_nut_thickness = 1.2;
