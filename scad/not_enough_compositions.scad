@@ -21,7 +21,8 @@ circuit_bridge_width = 1.2;
 circuit_thickness = 0.6;
 circuit_z = choc_v1_leg_height - circuit_thickness;
 
-rubber_padding = 4;
+rubber_horizontal_padding = 4;
+rubber_vertical_padding = 4;
 
 keycap_margin = 0.4;
 keycap_thickness = 1;
@@ -74,6 +75,19 @@ thumb_screw_positions = [
     [76.2, 8], [114.3, 8]
 ];
 
+alphanumeric_diode_positions = [
+    [ 3.56, 36.5], [ 3.56, 52.5], [ 1.18, 64.0], [  1.18, 80.0],
+    [22.61, 36.5], [22.61, 52.5], [20.23, 64.0], [ 20.23, 80.0],
+    [41.66, 36.5], [41.66, 52.5], [41.66, 68.5], [ 41.66, 84.5],
+    [60.71, 36.5], [60.71, 52.5], [60.71, 68.5], [ 60.71, 84.5],
+    [79.76, 36.5], [79.76, 52.5], [79.76, 68.5], [ 82.14, 75.5],
+    [98.81, 36.5], [98.81, 52.5], [98.81, 68.5], [101.19, 75.5]
+];
+
+thumb_diode_positions = [
+    [60.71, 12.5], [79.76, 12.5], [98.81, 12.5], [117.86, 12.5]
+];
+
 module key_choc_v1() {
     union() {
         translate([-choc_v1_body_bottom_size.x / 2,
@@ -88,6 +102,33 @@ module key_choc_v1() {
             cube(choc_v1_body_top_size);
         }
         translate([0, 0, -choc_v1_leg_height]) cylinder(choc_v1_leg_height, d = 3.2);
+    }
+}
+
+module choc_v1_hole(through_hole = false) {
+    module pad_hole() {
+        minkowski() {
+            cylinder(4, d = 2, center = true);
+            cube([2.2, 0.01, 0.01], center = true);
+        }
+    }
+
+    cylinder(through_hole ? 10 : (3.2 - circuit_thickness) * 2,
+             d = 3.5, center = true);
+    translate([ 5.5, 0]) cylinder(through_hole ? 10 : (3 - circuit_thickness) * 2,
+                                  d = 1.9, center = true);
+    translate([-5.5, 0]) cylinder(through_hole ? 10 : (3 - circuit_thickness) * 2,
+                                  d = 1.9, center = true);
+
+    translate([0, 5.9]) pad_hole();
+    translate([5, 3.8]) pad_hole();
+}
+
+module diode_hole(positions) {
+    rotate([tilt_a, 0]) {
+        for (p = positions) {
+            translate([p.x, p.y, circuit_z]) cube([2.7, 8, 1.8 * 2], center = true);
+        }
     }
 }
 
@@ -141,8 +182,8 @@ module circuit_board() {
                 }
             }
 
-            translate([alphanumeric_position.x, alphanumeric_position.y + rubber_padding]) {
-                cube([alphanumeric_size.x, alphanumeric_size.y - rubber_padding, circuit_thickness]);
+            translate([alphanumeric_position.x, alphanumeric_position.y + rubber_vertical_padding]) {
+                cube([alphanumeric_size.x, alphanumeric_size.y - rubber_vertical_padding, circuit_thickness]);
             }
 
             translate(thumb_position) cube([thumb_size.x, thumb_size.y, circuit_thickness]);
@@ -173,33 +214,9 @@ module circuit_board() {
 }
 
 module rubber_alphanumeric() {
-    module rubber_hole_choc_v1() {
-        module pad_hole() {
-            minkowski() {
-                cylinder(4, d = 2, center = true);
-                cube([2.2, 0.01, 0.01], center = true);
-            }
-        }
-
-        cylinder((3.2 - circuit_thickness) * 2, d = 3.5, center = true);
-        translate([ 5.5, 0]) cylinder((3 - circuit_thickness) * 2, d = 1.9, center = true);
-        translate([-5.5, 0]) cylinder((3 - circuit_thickness) * 2, d = 1.9, center = true);
-
-        translate([0, 5.9]) pad_hole();
-        translate([5, 3.8]) pad_hole();
-    }
-
     module pro_micro_hole() {
         translate([alphanumeric_position.x, alphanumeric_position.y + alphanumeric_size.y - 19]) {
             cube([34, 19, 10]);
-        }
-    }
-
-    module diode_hole(positions) {
-        rotate([tilt_a, 0]) {
-            for (p = positions) {
-                translate([p.x, p.y, circuit_z]) cube([2.7, 8, 1.8 * 2], center = true);
-            }
         }
     }
 
@@ -246,31 +263,28 @@ module rubber_alphanumeric() {
         }
     }
 
-    ry = alphanumeric_position.y + rubber_padding;
+    ry = alphanumeric_position.y + rubber_vertical_padding;
     rz = circuit_z + tan(tilt_a) * ry;
 
     y1 = ry * cos(tilt_a) + rz * sin(tilt_a);
     y2 = (alphanumeric_position.y + alphanumeric_size.y) * cos(tilt_a);
 
-    diode_positions = [
-        [ 3.56, 36.5], [ 3.56, 52.5], [ 1.18, 64.0], [  1.18, 80.0],
-        [22.61, 36.5], [22.61, 52.5], [20.23, 64.0], [ 20.23, 80.0],
-        [41.66, 36.5], [41.66, 52.5], [41.66, 68.5], [ 41.66, 84.5],
-        [60.71, 36.5], [60.71, 52.5], [60.71, 68.5], [ 60.71, 84.5],
-        [79.76, 36.5], [79.76, 52.5], [79.76, 68.5], [ 82.14, 75.5],
-        [98.81, 36.5], [98.81, 52.5], [98.81, 68.5], [101.19, 75.5]
-    ];
-
     difference() {
         hull() {
-            translate([alphanumeric_position.x, y1]) cube([alphanumeric_size.x, y2 - y1, 0.01]);
+            translate([alphanumeric_position.x + rubber_horizontal_padding, y1]) {
+                cube([alphanumeric_size.x - rubber_horizontal_padding * 2,
+                      y2 - y1,
+                      0.01]);
+            }
 
             rotate([tilt_a, 0]) {
-                translate([alphanumeric_position.x,
-                           alphanumeric_position.y + rubber_padding,
+                translate([alphanumeric_position.x + rubber_horizontal_padding,
+                           alphanumeric_position.y + rubber_vertical_padding,
                            circuit_z])
                 {
-                    cube([alphanumeric_size.x, alphanumeric_size.y - rubber_padding, 0.01]);
+                    cube([alphanumeric_size.x - rubber_horizontal_padding * 2,
+                          alphanumeric_size.y - rubber_vertical_padding,
+                          0.01]);
                 }
             }
         }
@@ -281,13 +295,13 @@ module rubber_alphanumeric() {
             for (y = [0 : 3]) {
                 rotate([tilt_a, 0]) {
                     translate([key_pitch_h * (x + 0.5), key_pitch_v * (y + 2), circuit_z]) {
-                        rubber_hole_choc_v1();
+                        choc_v1_hole(through_hole = false);
                     }
                 }
             }
         }
 
-        diode_hole(diode_positions);
+        diode_hole(alphanumeric_diode_positions);
         screw_bridge();
 
         for (p = alphanumeric_screw_positions) {
@@ -297,59 +311,39 @@ module rubber_alphanumeric() {
 }
 
 module rubber_thumb() {
-    module rubber_hole_choc_v1() {
-        module pad_hole() {
-            minkowski() {
-                cylinder(4, d = 2, center = true);
-                cube([2.2, 0.01, 0.01], center = true);
-            }
-        }
-
-        cylinder(10, d = 3.5, center = true);
-        translate([ 5.5, 0]) cylinder(10, d = 1.9, center = true);
-        translate([-5.5, 0]) cylinder(10, d = 1.9, center = true);
-
-        translate([0, 5.9]) pad_hole();
-        translate([5, 3.8]) pad_hole();
-    }
-
-    module diode_hole(positions) {
-        rotate([tilt_a, 0]) {
-            for (p = positions) {
-                translate([p.x, p.y, circuit_z]) cube([3.2, 8, 1.8 * 2], center = true);
-            }
-        }
-    }
-
-    ry = thumb_position.y + rubber_padding;
+    ry = thumb_position.y + rubber_vertical_padding;
     rz = circuit_z + tan(tilt_a) * ry;
 
     y1 = ry * cos(tilt_a) + rz * sin(tilt_a);
     y2 = (thumb_position.y + thumb_size.y) * cos(tilt_a);
 
-    diode_positions = [[60.71, 12.5], [79.76, 12.5], [98.81, 12.5], [117.86, 12.5]];
-
     difference() {
         hull() {
-            translate([thumb_position.x, y1]) cube([thumb_size.x, y2 - y1, 0.01]);
+            translate([thumb_position.x + rubber_horizontal_padding, y1]) {
+                cube([thumb_size.x - rubber_horizontal_padding * 2,
+                      y2 - y1,
+                      0.01]);
+            }
 
             rotate([tilt_a, 0]) {
-                translate([thumb_position.x,
-                           thumb_position.y + rubber_padding,
+                translate([thumb_position.x + rubber_horizontal_padding,
+                           thumb_position.y + rubber_vertical_padding,
                            circuit_z])
                 {
-                    cube([thumb_size.x, thumb_size.y - rubber_padding, 0.01]);
+                    cube([thumb_size.x - rubber_horizontal_padding * 2,
+                          thumb_size.y - rubber_vertical_padding,
+                          0.01]);
                 }
             }
         }
 
         for (x = [0 : 3]) {
             translate([key_pitch_h * (x + 3.5), key_pitch_v * 0.5, circuit_z]) {
-                rubber_hole_choc_v1();
+                choc_v1_hole(through_hole = true);
             }
         }
 
-        diode_hole(diode_positions);
+        diode_hole(thumb_diode_positions);
 
         for (p = thumb_screw_positions) {
             rotate([tilt_a, 0]) translate(p) {
@@ -437,8 +431,8 @@ module case_margin_bottom() {
                 }
             }
 
-            translate([alphanumeric_position.x, alphanumeric_position.y + rubber_padding]) {
-                cube([alphanumeric_size.x, alphanumeric_size.y - rubber_padding, 10]);
+            translate([alphanumeric_position.x, alphanumeric_position.y + rubber_vertical_padding]) {
+                cube([alphanumeric_size.x, alphanumeric_size.y - rubber_vertical_padding, 10]);
             }
 
             translate(thumb_position) cube([thumb_size.x, thumb_size.y, 10]);
@@ -446,20 +440,26 @@ module case_margin_bottom() {
     }
 
     module alphanumeric_rubber_hole() {
-        ry = alphanumeric_position.y + rubber_padding;
+        a = 10;
+
+        ry = alphanumeric_position.y + rubber_vertical_padding;
         rz = circuit_z + tan(tilt_a) * ry;
 
         y1 = ry * cos(tilt_a) + rz * sin(tilt_a);
 
         hull() {
-            translate([0, y1]) cube([alphanumeric_position.x + alphanumeric_size.x, 100, 0.01]);
+            translate([alphanumeric_position.x - a, y1]) {
+                cube([alphanumeric_size.x - rubber_horizontal_padding + a,
+                      100,
+                      0.01]);
+            }
 
             rotate([tilt_a, 0]) {
-                translate([0,
-                           alphanumeric_position.y + rubber_padding,
+                translate([alphanumeric_position.x - a,
+                           alphanumeric_position.y + rubber_vertical_padding,
                            circuit_z])
                 {
-                    cube([alphanumeric_position.x + alphanumeric_size.x,
+                    cube([alphanumeric_size.x - rubber_horizontal_padding + a,
                           100,
                           10]);
                 }
@@ -468,21 +468,27 @@ module case_margin_bottom() {
     }
 
     module thumb_rubber_hole() {
-        ry = thumb_position.y + rubber_padding;
+        ry = thumb_position.y + rubber_vertical_padding;
         rz = circuit_z + tan(tilt_a) * ry;
 
         y1 = ry * cos(tilt_a) + rz * sin(tilt_a);
         y2 = (thumb_position.y + thumb_size.y) * cos(tilt_a);
 
         hull() {
-            translate([thumb_position.x, y1]) cube([100, y2 - y1, 0.01]);
+            translate([thumb_position.x + rubber_horizontal_padding, y1]) {
+                cube([thumb_size.x - rubber_horizontal_padding * 2,
+                      y2 - y1,
+                      0.01]);
+            }
 
             rotate([tilt_a, 0]) {
-                translate([thumb_position.x,
-                           thumb_position.y + rubber_padding,
+                translate([thumb_position.x + rubber_horizontal_padding,
+                           thumb_position.y + rubber_vertical_padding,
                            circuit_z])
                 {
-                    cube([100, thumb_size.y - rubber_padding, 10]);
+                    cube([thumb_size.x - rubber_horizontal_padding * 2,
+                          thumb_size.y - rubber_vertical_padding,
+                          10]);
                 }
             }
         }
@@ -548,24 +554,50 @@ module case_margin_bottom() {
 
     size_y = ry * cos(tilt_a) + rz * sin(tilt_a);
 
-    union() {
-        difference() {
-            hull() {
-                translate([0, 0, 0.75]) cube([circuit_board_size.x, size_y, 0.01]);
+    difference() {
+        union() {
+            difference() {
+                hull() {
+                    translate([0, 0, 0.75]) cube([circuit_board_size.x, size_y, 0.01]);
 
+                    rotate([tilt_a, 0]) {
+                        translate([0, 0, circuit_z]) {
+                            cube([circuit_board_size.x, circuit_board_size.y, circuit_thickness]);
+                        }
+                    }
+                }
+
+                circuit_board_hole();
+                alphanumeric_rubber_hole();
+                thumb_rubber_hole();
+            }
+
+            screw_bridge();
+        }
+
+        for (x = [0 : 5]) {
+            for (y = [0 : 3]) {
                 rotate([tilt_a, 0]) {
-                    translate([0, 0, circuit_z]) {
-                        cube([circuit_board_size.x, circuit_board_size.y, circuit_thickness]);
+                    translate([key_pitch_h * (x + 0.5), key_pitch_v * (y + 2), circuit_z]) {
+                        choc_v1_hole(through_hole = false);
                     }
                 }
             }
-
-            circuit_board_hole();
-            alphanumeric_rubber_hole();
-            thumb_rubber_hole();
         }
 
-        screw_bridge();
+        for (x = [0 : 3]) {
+            translate([key_pitch_h * (x + 3.5), key_pitch_v * 0.5, circuit_z]) {
+                choc_v1_hole(through_hole = true);
+            }
+        }
+
+        diode_hole(alphanumeric_diode_positions);
+
+        rotate([tilt_a, 0]) {
+            for (p = thumb_diode_positions) {
+                translate([p.x, p.y - 0.5, circuit_z]) cube([2.7, 8, 10], center = true);
+            }
+        }
     }
 }
 
@@ -684,3 +716,4 @@ rotate([tilt_a, 0]) {
         }
     }
 }
+
