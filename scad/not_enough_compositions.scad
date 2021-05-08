@@ -220,6 +220,14 @@ module rubber_alphanumeric() {
         }
     }
 
+    module reset_button_hole() {
+        rotate([tilt_a, 0]) translate([47.61, 74]) cube([11, 7, 10], center = true);
+    }
+
+    module trrs_connector_hole() {
+        rotate([tilt_a, 0]) translate([95.24, 89]) cube([6.5, 13 * 2, 5.5], center = true);
+    }
+
     module screw_bridge() {
         horizontal_bridge_width = 12;
         vertical_bridge_width = 8;
@@ -290,6 +298,8 @@ module rubber_alphanumeric() {
         }
 
         pro_micro_hole();
+        reset_button_hole();
+        trrs_connector_hole();
 
         for (x = [0 : 5]) {
             for (y = [0 : 3]) {
