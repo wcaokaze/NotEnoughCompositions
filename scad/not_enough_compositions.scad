@@ -624,6 +624,14 @@ module case_margin_top() {
         translate(case_alphanumeric_position) cube([case_alphanumeric_size.x, case_alphanumeric_size.y, 20]);
         translate(case_thumb_position) cube([case_thumb_size.x, case_thumb_size.y, 20]);
 
+        for (x = [0 : 5]) {
+            translate([alphanumeric_position.x + key_pitch_h * (x + 0.5) - 14.2 / 2,
+                       alphanumeric_position.y])
+            {
+                cube([14.2, 100, 20]);
+            }
+        }
+
         for (p = [each alphanumeric_screw_positions, each thumb_screw_positions]) {
             translate(p) cylinder(20, d = 2.2);
         }
@@ -726,4 +734,3 @@ rotate([tilt_a, 0]) {
         }
     }
 }
-
