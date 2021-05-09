@@ -213,7 +213,7 @@ module circuit_board() {
     }
 }
 
-module rubber_alphanumeric() {
+module rubber_alphanumeric(diode_positions) {
     module pro_micro_hole() {
         translate([alphanumeric_position.x, alphanumeric_position.y + alphanumeric_size.y - 19]) {
             cube([34, 19, 10]);
@@ -311,7 +311,7 @@ module rubber_alphanumeric() {
             }
         }
 
-        diode_hole(alphanumeric_diode_positions);
+        diode_hole(diode_positions);
         screw_bridge();
 
         for (p = alphanumeric_screw_positions) {
@@ -320,7 +320,7 @@ module rubber_alphanumeric() {
     }
 }
 
-module rubber_thumb() {
+module rubber_thumb(diode_positions) {
     ry = thumb_position.y + rubber_vertical_padding;
     rz = circuit_z + tan(tilt_a) * ry;
 
@@ -353,7 +353,7 @@ module rubber_thumb() {
             }
         }
 
-        diode_hole(thumb_diode_positions);
+        diode_hole(diode_positions);
 
         for (p = thumb_screw_positions) {
             rotate([tilt_a, 0]) translate(p) {
@@ -424,7 +424,7 @@ module case_thumb() {
     }
 }
 
-module case_margin_bottom() {
+module case_margin_bottom(alphanumeric_diode_positions, thumb_diode_positions) {
     module circuit_board_hole() {
         a = 10;
 
@@ -691,13 +691,13 @@ color("#ff000044") {
     }
 }
 
-rubber_alphanumeric();
-rubber_thumb();
+rubber_alphanumeric(alphanumeric_diode_positions);
+rubber_thumb(thumb_diode_positions);
 
 rotate([tilt_a, 0]) case_alphanumeric();
 rotate([tilt_a, 0]) case_thumb();
 
-color("#ffffff33") case_margin_bottom();
+color("#ffffff33") case_margin_bottom(alphanumeric_diode_positions, thumb_diode_positions);
 color("#ffffff33") rotate([tilt_a, 0]) case_margin_top();
 
 for (p = alphanumeric_screw_positions) {
