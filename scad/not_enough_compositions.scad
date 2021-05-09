@@ -75,7 +75,7 @@ thumb_screw_positions = [
     [76.2, 8], [114.3, 8]
 ];
 
-alphanumeric_diode_positions = [
+left_alphanumeric_diode_positions = [
     [ 3.56, 36.5], [ 3.56, 52.5], [ 1.18, 64.0], [  1.18, 80.0],
     [22.61, 36.5], [22.61, 52.5], [20.23, 64.0], [ 20.23, 80.0],
     [41.66, 36.5], [41.66, 52.5], [41.66, 68.5], [ 41.66, 84.5],
@@ -84,7 +84,7 @@ alphanumeric_diode_positions = [
     [98.81, 36.5], [98.81, 52.5], [98.81, 68.5], [101.19, 75.5]
 ];
 
-thumb_diode_positions = [
+left_thumb_diode_positions = [
     [60.71, 12.5], [79.76, 12.5], [98.81, 12.5], [117.86, 12.5]
 ];
 
@@ -691,13 +691,13 @@ color("#ff000044") {
     }
 }
 
-rubber_alphanumeric(alphanumeric_diode_positions);
-rubber_thumb(thumb_diode_positions);
+rubber_alphanumeric(left_alphanumeric_diode_positions);
+rubber_thumb(left_thumb_diode_positions);
 
 rotate([tilt_a, 0]) case_alphanumeric();
 rotate([tilt_a, 0]) case_thumb();
 
-color("#ffffff33") case_margin_bottom(alphanumeric_diode_positions, thumb_diode_positions);
+color("#ffffff33") case_margin_bottom(left_alphanumeric_diode_positions, left_thumb_diode_positions);
 color("#ffffff33") rotate([tilt_a, 0]) case_margin_top();
 
 for (p = alphanumeric_screw_positions) {
