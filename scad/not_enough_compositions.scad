@@ -653,14 +653,19 @@ module keycap(north_wall = false,
     inner_south = outer_south - (south_wall ? keycap_thickness : 0);
     inner_west  = outer_west  + (west_wall  ? keycap_thickness : 0);
 
-    difference() {
-        translate([outer_west, outer_north]) {
-            cube([outer_east - outer_west, outer_south - outer_north, choc_v1_travel]);
+    union() {
+        difference() {
+            translate([outer_west, outer_north]) {
+                cube([outer_east - outer_west, outer_south - outer_north, choc_v1_travel]);
+            }
+
+            translate([inner_west, inner_north, keycap_thickness]) {
+                cube([inner_east - inner_west, inner_south - inner_north, choc_v1_travel]);
+            }
         }
 
-        translate([inner_west, inner_north, keycap_thickness]) {
-            cube([inner_east - inner_west, inner_south - inner_north, choc_v1_travel]);
-        }
+        translate([ 5.7 / 2 - 1 / 2, -2.8 / 2, keycap_thickness]) rotate([0,  3])                    cube([1, 2.8, 3.2]);
+        translate([-5.7 / 2 + 1 / 2, -2.8 / 2, keycap_thickness]) rotate([0, -3]) translate([-1, 0]) cube([1, 2.8, 3.2]);
     }
 }
 
