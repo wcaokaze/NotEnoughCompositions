@@ -631,14 +631,16 @@ module case_margin_top() {
         }
     }
 
+    position = [0, 0, circuit_z + circuit_thickness];
+
+    size = [
+        circuit_board_size.x,
+        circuit_board_size.y,
+        choc_v1_body_bottom_size.z + choc_v1_body_top_size.z - case_wall_thickness
+    ];
+
     difference() {
-        translate([0, 0, circuit_z + circuit_thickness]) {
-            cube([
-                circuit_board_size.x,
-                circuit_board_size.y,
-                choc_v1_body_bottom_size.z + choc_v1_body_top_size.z - case_wall_thickness
-            ]);
-        }
+        translate(position) cube(size);
 
         translate(case_alphanumeric_position) cube([case_alphanumeric_size.x, case_alphanumeric_size.y, 20]);
         translate(case_thumb_position) cube([case_thumb_size.x, case_thumb_size.y, 20]);
@@ -664,6 +666,11 @@ module case_margin_top() {
         for (p = [each alphanumeric_screw_positions, each thumb_screw_positions]) {
             translate(p) cylinder(20, d = 2.2);
         }
+
+        translate([                   0,                    0, position.z + size.z - 1]) rotate([  0,  45]) translate([-200,    0]) cube([400, 400, 400], center = true);
+        translate([                   0,                    0, position.z + size.z - 1]) rotate([-45,   0]) translate([   0, -200]) cube([400, 400, 400], center = true);
+        translate([circuit_board_size.x,                    0, position.z + size.z - 1]) rotate([  0, -45]) translate([ 200,    0]) cube([400, 400, 400], center = true);
+        translate([                   0, circuit_board_size.y, position.z + size.z - 1]) rotate([ 45,   0]) translate([   0,  200]) cube([400, 400, 400], center = true);
     }
 }
 
