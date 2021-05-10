@@ -653,6 +653,14 @@ module case_margin_top() {
             }
         }
 
+        for (x = [0 : 3]) {
+            translate([thumb_position.x + key_pitch_h * (x + 0.5) - 14.2 / 2,
+                       thumb_position.y])
+            {
+                cube([14.2, thumb_size.y, 20]);
+            }
+        }
+
         for (p = [each alphanumeric_screw_positions, each thumb_screw_positions]) {
             translate(p) cylinder(20, d = 2.2);
         }
