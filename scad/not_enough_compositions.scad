@@ -679,10 +679,10 @@ module keycap(north_wall = false,
               south_wall = false,
               west_wall  = false)
 {
-    outer_north = -(key_pitch_v - keycap_margin) / 2 + (north_wall ? keycap_vertical_wall_d   : 0);
+    outer_north = -(key_pitch_v - keycap_margin) / 2 - (north_wall ? keycap_vertical_wall_d   : 0);
     outer_east  =  (key_pitch_h - keycap_margin) / 2 + (east_wall  ? keycap_horizontal_wall_d : 0);
     outer_south =  (key_pitch_v - keycap_margin) / 2 + (south_wall ? keycap_vertical_wall_d   : 0);
-    outer_west  = -(key_pitch_h - keycap_margin) / 2 + (west_wall  ? keycap_horizontal_wall_d : 0);
+    outer_west  = -(key_pitch_h - keycap_margin) / 2 - (west_wall  ? keycap_horizontal_wall_d : 0);
 
     inner_north = outer_north + (north_wall ? keycap_thickness : 0);
     inner_east  = outer_east  - (east_wall  ? keycap_thickness : 0);
