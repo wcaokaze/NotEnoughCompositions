@@ -226,7 +226,7 @@ module circuit_board() {
     }
 }
 
-module rubber_alphanumeric(diode_positions, is_left_side) {
+module rubber_alphanumeric(is_left_side) {
     module pro_micro_hole() {
         translate([alphanumeric_position.x, alphanumeric_position.y + alphanumeric_size.y - 19]) {
             cube([34, 19, 10]);
@@ -324,7 +324,7 @@ module rubber_alphanumeric(diode_positions, is_left_side) {
             }
         }
 
-        diode_hole(diode_positions);
+        diode_hole(is_left_side ? left_alphanumeric_diode_positions : right_alphanumeric_diode_positions);
         screw_bridge();
 
         for (p = alphanumeric_screw_positions) {
@@ -333,7 +333,7 @@ module rubber_alphanumeric(diode_positions, is_left_side) {
     }
 }
 
-module rubber_thumb(diode_positions, is_left_side) {
+module rubber_thumb(is_left_side) {
     ry = thumb_position.y + rubber_vertical_padding;
     rz = circuit_z + tan(tilt_a) * ry;
 
@@ -366,7 +366,7 @@ module rubber_thumb(diode_positions, is_left_side) {
             }
         }
 
-        diode_hole(diode_positions);
+        diode_hole(is_left_side ? left_thumb_diode_positions : right_thumb_diode_positions);
 
         for (p = thumb_screw_positions) {
             rotate([tilt_a, 0]) translate(p) {
@@ -437,7 +437,7 @@ module case_thumb() {
     }
 }
 
-module case_margin_bottom(alphanumeric_diode_positions, thumb_diode_positions, is_left_side) {
+module case_margin_bottom(is_left_side) {
     module circuit_board_hole() {
         a = 10;
 
@@ -614,10 +614,10 @@ module case_margin_bottom(alphanumeric_diode_positions, thumb_diode_positions, i
             }
         }
 
-        diode_hole(alphanumeric_diode_positions);
+        diode_hole(is_left_side ? left_alphanumeric_diode_positions : right_alphanumeric_diode_positions);
 
         rotate([tilt_a, 0]) {
-            for (p = thumb_diode_positions) {
+            for (p = is_left_side ? left_thumb_diode_positions : right_thumb_diode_positions) {
                 translate([p.x, p.y - 0.5, circuit_z]) cube([2.7, 8, 10], center = true);
             }
         }
@@ -704,13 +704,13 @@ color("#ff000044") {
     }
 }
 
-rubber_alphanumeric(right_alphanumeric_diode_positions, is_left_side = false);
-rubber_thumb(right_thumb_diode_positions, is_left_side = false);
+rubber_alphanumeric(is_left_side = false);
+rubber_thumb(is_left_side = false);
 
 rotate([tilt_a, 0]) case_alphanumeric();
 rotate([tilt_a, 0]) case_thumb();
 
-color("#ffffff33") case_margin_bottom(right_alphanumeric_diode_positions, right_thumb_diode_positions, is_left_side = false);
+color("#ffffff33") case_margin_bottom(is_left_side = false);
 color("#ffffff33") rotate([tilt_a, 0]) case_margin_top();
 
 for (p = alphanumeric_screw_positions) {
