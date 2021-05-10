@@ -59,7 +59,7 @@ case_thumb_position = [
     circuit_z + circuit_thickness + case_margin_top_thickness
 ];
 
-screw_d = 2.2;
+screw_d = 2.4;
 screw_head_d = 3.8;
 alphanumeric_screw_length = 8;
 thumb_screw_length = 6;
