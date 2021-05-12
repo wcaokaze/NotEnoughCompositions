@@ -647,6 +647,10 @@ module case_margin_top() {
 
         pro_micro_hole();
 
+        translate([alphanumeric_position.x - 14.2 / 2, alphanumeric_position.y]) {
+            cube([14.2, 100, 20]);
+        }
+
         for (x = [0 : 5]) {
             translate([alphanumeric_position.x + key_pitch_h * (x + 0.5) - 14.2 / 2,
                        alphanumeric_position.y])
