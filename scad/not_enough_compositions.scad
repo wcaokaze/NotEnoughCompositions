@@ -60,7 +60,7 @@ case_thumb_position = [
 ];
 
 screw_d = 2.4;
-screw_head_d = 3.8;
+screw_head_d = 4;
 alphanumeric_screw_length = 8;
 thumb_screw_length = 6;
 alphanumeric_screw_z = case_alphanumeric_position.z + case_bottom_thickness - alphanumeric_screw_length;
