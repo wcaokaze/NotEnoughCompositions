@@ -238,7 +238,7 @@ module rubber_alphanumeric(is_left_side) {
     }
 
     module trrs_connector_hole() {
-        rotate([tilt_a, 0]) translate([95.24, 89]) cube([6.5, 13 * 2, 5.5], center = true);
+        rotate([tilt_a, 0]) translate([95.24, 89]) cube([6.5, 13 * 2, 6], center = true);
     }
 
     module screw_bridge() {
@@ -631,6 +631,10 @@ module case_margin_top() {
         }
     }
 
+    module trrs_connector_hole() {
+        translate([95.24, 89]) cube([6.5, 14 * 2, 20], center = true);
+    }
+
     position = [0, 0, circuit_z + circuit_thickness];
 
     size = [
@@ -646,6 +650,7 @@ module case_margin_top() {
         translate(case_thumb_position) cube([case_thumb_size.x, case_thumb_size.y, 20]);
 
         pro_micro_hole();
+        trrs_connector_hole();
 
         translate([alphanumeric_position.x - 14.2 / 2, alphanumeric_position.y]) {
             cube([14.2, 100, 20]);
