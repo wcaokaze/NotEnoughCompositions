@@ -234,7 +234,7 @@ module rubber_alphanumeric(is_left_side) {
     }
 
     module reset_button_hole() {
-        rotate([tilt_a, 0]) translate([47.61, 74]) cube([11, 7, 10], center = true);
+        rotate([tilt_a, 0]) translate([47.61, 74]) cube([11, 7, 20], center = true);
     }
 
     module trrs_connector_hole() {
