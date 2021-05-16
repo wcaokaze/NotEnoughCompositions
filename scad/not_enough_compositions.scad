@@ -24,7 +24,7 @@ circuit_z = choc_v1_leg_height - circuit_thickness;
 rubber_horizontal_padding = 4.7;
 rubber_vertical_padding = 4;
 
-keycap_margin = 0.4;
+keycap_margin = 0.8;
 keycap_thickness = 1;
 
 keycap_horizontal_wall_d = max(choc_v1_body_top_size.x / 2 + 0.4 + keycap_thickness - (key_pitch_h - keycap_margin) / 2, 0);
@@ -698,6 +698,19 @@ module keycap(north_wall = false,
     inner_south = outer_south - (south_wall ? keycap_thickness : 0);
     inner_west  = outer_west  + (west_wall  ? keycap_thickness : 0);
 
+    module stem_leg() {
+        t = 1.2;
+
+        translate([5.7 / 2 - t / 2, -2.8 / 2, keycap_thickness]) {
+            rotate([0, 1]) {
+                difference() {
+                    cube([t, 2.8, 3.2]);
+                    translate([0, 0.8]) cube([t - 0.9, 1.2, 3.2]);
+                }
+            }
+        }
+    }
+
     union() {
         difference() {
             translate([outer_west, outer_north]) {
@@ -709,8 +722,8 @@ module keycap(north_wall = false,
             }
         }
 
-        translate([ 5.7 / 2 - 1 / 2, -2.8 / 2, keycap_thickness]) rotate([0,  3])                    cube([1, 2.8, 3.2]);
-        translate([-5.7 / 2 + 1 / 2, -2.8 / 2, keycap_thickness]) rotate([0, -3]) translate([-1, 0]) cube([1, 2.8, 3.2]);
+        stem_leg();
+        mirror([1, 0]) stem_leg();
     }
 }
 
