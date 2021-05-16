@@ -9,7 +9,7 @@ alphanumeric_size = [key_pitch_h * 6, key_pitch_v * 4];
 thumb_position = [key_pitch_h * 3, 0];
 thumb_size = [key_pitch_h * 4, key_pitch_v];
 
-tilt_a = atan2(3.5, 64.2);
+tilt_a = atan2(4.7, 64.2);
 
 choc_v1_body_bottom_size = [15, 15, 3];
 choc_v1_body_top_size = [13.8, 13.8, 2];
