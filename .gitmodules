@@ -1,0 +1,3 @@
+[submodule "kicad/kbd"]
+	path = kicad/kbd
+	url = ssh://github.com/foostan/kbd.git
