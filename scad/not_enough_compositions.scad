@@ -126,11 +126,11 @@ module choc_v1_hole(through_hole = false, is_left_side) {
         }
     }
 
-    cylinder(through_hole ? 10 : (3.2 - circuit_thickness) * 2,
+    cylinder(through_hole ? 20 : (3.2 - circuit_thickness) * 2,
              d = 3.5, center = true);
-    translate([ 5.5, 0]) cylinder(through_hole ? 10 : (3 - circuit_thickness) * 2,
+    translate([ 5.5, 0]) cylinder(through_hole ? 20 : (3 - circuit_thickness) * 2,
                                   d = 1.9, center = true);
-    translate([-5.5, 0]) cylinder(through_hole ? 10 : (3 - circuit_thickness) * 2,
+    translate([-5.5, 0]) cylinder(through_hole ? 20 : (3 - circuit_thickness) * 2,
                                   d = 1.9, center = true);
 
     translate([0, 5.9]) pad_hole();
@@ -362,7 +362,7 @@ module rubber_thumb(is_left_side) {
 
         for (x = [0 : 3]) {
             translate([key_pitch_h * (x + 3.5), key_pitch_v * 0.5, circuit_z]) {
-                choc_v1_hole(through_hole = false, is_left_side = is_left_side);
+                choc_v1_hole(through_hole = true, is_left_side = is_left_side);
             }
         }
 
